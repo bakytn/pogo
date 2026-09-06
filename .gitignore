@@ -1,0 +1,10 @@
+# Go build artifacts
+/pogo
+*.test
+*.out
+
+# Python harness cache
+__pycache__/
+
+# Local secrets / scratch
+.env

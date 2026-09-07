@@ -75,6 +75,51 @@ When a combo can't sit under the league (e.g. a 15/15/15 Mega in Ultra), it
 reports `not reachable` plus the total reachable set size, the combo's CP at
 the league cap, and its stats.
 
+### `breaker` — IV breakpoints vs the top meta
+
+```
+pogo breaker <pokemon> [cp] [atk def hp] [league] [shadow] [dump]
+```
+
+For your Pokémon, against **each of the top meta Pokémon in that league** (a
+static list pulled from pvpoke's published overall rankings — `data/meta/<cp>.json`),
+`breaker` reports, for every one of your moves, the damage it deals in **four
+IV states**:
+
+| state | IVs | meaning |
+|-------|-----|---------|
+| `now` | your actual IVs | how your current build deals damage |
+| `rank 1` | the highest stat-product combo reachable in the league | a "rank 1" build of the same species |
+| `15-0-0` | max attack, floor def/hp | the pure-attacker extreme |
+| `0-15-0` | floor atk, max def, floor hp | the pure-tank extreme |
+
+This surfaces IV breakpoints / bulkpoints as a *damage delta*: how much your
+IVs give (or cost) you against each top-10/20 meta opponent. The classic
+example — a high-attack Sableye starts dealing **+1 Shadow Claw** over Charjabug
+once its attack crosses into that damage tier — shows up as `15-0-0 > rank 1`.
+
+The opponent is held **fixed at its rank-1 stats** (from the meta file) plus
+shadow multipliers, so the only thing that varies across your four columns is
+your own IVs. Fast moves are listed first, then charged.
+
+```
+$ pogo breaker sableye 1500 15 0 0 great
+Sableye (dark/ghost) vs great (1500 CP) · IVs 15/0/0
+Your stats: now A131 D114 H114 · rank 1 A118 D127 H127 · ...
+1. Lickilicky ...
+⚡Shadow Claw   2 / 2 / 2 / 2
+  Foul Play     53 / 48 / 53 / 48   (R1 5)  best +0
+...
+```
+
+- `league` may be a name (`little`/`great`/`ultra`/`master`) or a CP ceiling;
+  it must match the league whose top-meta file is being used.
+- `shadow` switches your Pokémon to its shadow form for the whole analysis.
+- `dump` prints a machine-readable form (STATES + per-move rows) for scripting.
+
+`rank` shows where your IVs fall in the reachable set; `breaker` shows what
+those IVs *do* to your damage against the Pokémon you'll actually face.
+
 ## Discord bot
 
 ```sh
@@ -82,8 +127,8 @@ DISCORD_TOKEN=… ./pogo bot
 ```
 
 On connect it bulk-registers **one slash command per `service.Command`**
-(currently `/rank`), then answers interactions through the same `rank` handler.
-A bot-invite token is required; the bot registers its commands globally.
+(currently `/rank` and `/breaker`), then answers interactions through the same
+handlers. A bot-invite token is required; the bot registers its commands globally.
 
 ## Extending
 
@@ -123,6 +168,14 @@ The engine is a faithful port of pvpoke's `src/js/pokemon/Pokemon.js`
   of species × leagues × IVs × sort-stats and assert rank, count, level, CP,
   and all three displayed stats are identical.
 
+The breaker's damage math is a faithful port of pvpoke's
+`src/js/battle/DamageCalculator.js` (type chart, STAB, shadow multipliers, the
+`damage()` formula). `bp_ref.py` re-implements that damage/STAB/type math in
+Python (it reads the `cpms` table from the JS) and feeds it the **same**
+per-state attack values the Go engine computes, then asserts the resulting
+damage integers match across all four leagues × sampled species. The CP-walk
+behind those attack values is already covered by `pvpoke_ref.py` above.
+
 The initial port was **not** byte-for-byte: the level floor (`baseLevelFloor`,
 39 species) was hard-coded to 1, and the `overall` term used a different
 multiplication order + a clamped HP, which flipped near-ties (e.g. Volcarona
@@ -133,20 +186,32 @@ Python reference is the ground truth since the running site shares the file.)
 Run it:
 
 ```sh
-go test ./...        # engine unit tests (pin the proven values)
-python3 compare.py   # Go vs reference, 20 curated cases
-python3 fuzz.py 100  # Go vs reference, 100 random cases
+go test ./...        # engine + breaker unit tests (pin the proven values)
+python3 compare.py   # rank: Go vs reference, 20 curated cases
+python3 fuzz.py 100  # rank: Go vs reference, 100 random cases
+```
+
+For the breaker's damage parity (Go vs `bp_ref.py`), diff the machine-readable
+`dump` form:
+
+```sh
+s=$(./pogo breaker sableye 1500 15 0 0 great dump | sed -n 's/^STATES //p')
+diff <(./pogo breaker sableye 1500 15 0 0 great dump) \
+     <(python3 bp_ref.py data/gamemaster.json data/meta/1500.json sableye 1500 15 0 0 0 0 "$s")
 ```
 
 ## Layout
 
 ```
-cmd/pogo/            CLI entry: rank / list / help / bot, arg parsing
-internal/engine/     CP + CPM + IV-floor + level-walk; GameData model + loader
-                     cpm.go · data.go · fetch.go · rank.go (+ tests)
+cmd/pogo/            CLI entry: rank / breaker / list / help / bot, arg parsing
+internal/engine/     CP + CPM + IV-floor + level-walk; GameData model + loader;
+                     cpm.go · data.go · fetch.go · rank.go · damage.go (+ tests)
+internal/breaker/    meta loader + 4-IV-state analyzer + `breaker` command (+ tests)
 internal/service/    Command interface + registry; rank command; Resolve/name logic
 internal/bot/        discordgo driver; auto slash-command registration + dispatch
 data/gamemaster.json local game data (offline + for tests)
-pvpoke_ref.py        independent JS→Python reference (parity oracle)
-compare.py, fuzz.py  Go vs reference parity harnesses
+data/meta/<cp>.json  per-league top-20 meta (pvpoke overall rankings)
+pvpoke_ref.py        independent JS→Python rank reference (parity oracle)
+bp_ref.py            independent JS→Python damage reference (breaker parity oracle)
+compare.py, fuzz.py  Go vs reference parity harnesses (rank)
 ```

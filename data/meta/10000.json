@@ -1,0 +1,460 @@
+{
+ "league": "master",
+ "cp": 10000,
+ "top": [
+  {
+   "speciesId": "zacian_crowned_sword",
+   "speciesName": "Zacian (Crowned Sword)",
+   "score": 99,
+   "fastMoves": [
+    "METAL_CLAW",
+    "AIR_SLASH"
+   ],
+   "chargedMoves": [
+    "PLAY_ROUGH",
+    "GIGA_IMPACT",
+    "CLOSE_COMBAT",
+    "BEHEMOTH_BLADE"
+   ],
+   "stats": {
+    "product": 10809,
+    "atk": 291.5,
+    "def": 214.2,
+    "hp": 173
+   }
+  },
+  {
+   "speciesId": "palkia_origin",
+   "speciesName": "Palkia (Origin)",
+   "score": 98.9,
+   "fastMoves": [
+    "DRAGON_TAIL",
+    "DRAGON_BREATH"
+   ],
+   "chargedMoves": [
+    "SPACIAL_REND",
+    "HYDRO_PUMP",
+    "FIRE_BLAST",
+    "DRACO_METEOR",
+    "AQUA_TAIL"
+   ],
+   "stats": {
+    "product": 8650,
+    "atk": 252.9,
+    "def": 199.9,
+    "hp": 171
+   }
+  },
+  {
+   "speciesId": "metagross",
+   "speciesName": "Metagross",
+   "score": 97.9,
+   "fastMoves": [
+    "ZEN_HEADBUTT",
+    "SHADOW_CLAW",
+    "FURY_CUTTER",
+    "BULLET_PUNCH"
+   ],
+   "chargedMoves": [
+    "RETURN",
+    "PSYCHIC",
+    "METEOR_MASH",
+    "FLASH_CANNON",
+    "EARTHQUAKE"
+   ],
+   "stats": {
+    "product": 8027,
+    "atk": 228.5,
+    "def": 204.1,
+    "hp": 172
+   }
+  },
+  {
+   "speciesId": "kyurem_white",
+   "speciesName": "Kyurem (White)",
+   "score": 94.8,
+   "fastMoves": [
+    "STEEL_WING",
+    "ICE_FANG",
+    "DRAGON_BREATH"
+   ],
+   "chargedMoves": [
+    "ICE_BURN",
+    "FUSION_FLARE",
+    "FOCUS_BLAST",
+    "DRAGON_PULSE",
+    "BLIZZARD",
+    "ANCIENT_POWER"
+   ],
+   "stats": {
+    "product": 9905,
+    "atk": 273,
+    "def": 166.3,
+    "hp": 218
+   }
+  },
+  {
+   "speciesId": "lunala",
+   "speciesName": "Lunala",
+   "score": 94.8,
+   "fastMoves": [
+    "SHADOW_CLAW",
+    "CONFUSION",
+    "AIR_SLASH"
+   ],
+   "chargedMoves": [
+    "SHADOW_BALL",
+    "PSYCHIC",
+    "MOONBLAST",
+    "FUTURE_SIGHT"
+   ],
+   "stats": {
+    "product": 9190,
+    "atk": 226.8,
+    "def": 173.1,
+    "hp": 234
+   }
+  },
+  {
+   "speciesId": "xerneas",
+   "speciesName": "Xerneas",
+   "score": 94.8,
+   "fastMoves": [
+    "ZEN_HEADBUTT",
+    "TACKLE",
+    "GEOMANCY"
+   ],
+   "chargedMoves": [
+    "THUNDER",
+    "MOONBLAST",
+    "MEGAHORN",
+    "GIGA_IMPACT",
+    "CLOSE_COMBAT"
+   ],
+   "stats": {
+    "product": 8196,
+    "atk": 222.6,
+    "def": 168,
+    "hp": 219
+   }
+  },
+  {
+   "speciesId": "dialga_origin",
+   "speciesName": "Dialga (Origin)",
+   "score": 94,
+   "fastMoves": [
+    "METAL_CLAW",
+    "DRAGON_BREATH"
+   ],
+   "chargedMoves": [
+    "THUNDER",
+    "ROAR_OF_TIME",
+    "IRON_HEAD",
+    "DRACO_METEOR"
+   ],
+   "stats": {
+    "product": 8887,
+    "atk": 239.4,
+    "def": 201.6,
+    "hp": 184
+   }
+  },
+  {
+   "speciesId": "reshiram",
+   "speciesName": "Reshiram",
+   "score": 94,
+   "fastMoves": [
+    "FIRE_FANG",
+    "DRAGON_BREATH"
+   ],
+   "chargedMoves": [
+    "STONE_EDGE",
+    "RETURN",
+    "OVERHEAT",
+    "FUSION_FLARE",
+    "DRACO_METEOR",
+    "CRUNCH"
+   ],
+   "stats": {
+    "product": 8515,
+    "atk": 243.6,
+    "def": 189.9,
+    "hp": 184
+   }
+  },
+  {
+   "speciesId": "zamazenta_crowned_shield",
+   "speciesName": "Zamazenta (Crowned Shield)",
+   "score": 93.9,
+   "fastMoves": [
+    "METAL_CLAW",
+    "ICE_FANG"
+   ],
+   "chargedMoves": [
+    "MOONBLAST",
+    "GIGA_IMPACT",
+    "CLOSE_COMBAT",
+    "BEHEMOTH_BASH"
+   ],
+   "stats": {
+    "product": 9938,
+    "atk": 222.6,
+    "def": 257.9,
+    "hp": 173
+   }
+  },
+  {
+   "speciesId": "kyurem_black",
+   "speciesName": "Kyurem (Black)",
+   "score": 93.1,
+   "fastMoves": [
+    "SHADOW_CLAW",
+    "DRAGON_TAIL"
+   ],
+   "chargedMoves": [
+    "STONE_EDGE",
+    "OUTRAGE",
+    "IRON_HEAD",
+    "FUSION_BOLT",
+    "FREEZE_SHOCK",
+    "BLIZZARD"
+   ],
+   "stats": {
+    "product": 9905,
+    "atk": 273,
+    "def": 166.3,
+    "hp": 218
+   }
+  },
+  {
+   "speciesId": "kyogre",
+   "speciesName": "Kyogre",
+   "score": 93,
+   "fastMoves": [
+    "WATERFALL"
+   ],
+   "chargedMoves": [
+    "THUNDER",
+    "SURF",
+    "RETURN",
+    "ORIGIN_PULSE",
+    "HYDRO_PUMP",
+    "BLIZZARD",
+    "AVALANCHE"
+   ],
+   "stats": {
+    "product": 8998,
+    "atk": 239.4,
+    "def": 204.1,
+    "hp": 184
+   }
+  },
+  {
+   "speciesId": "zekrom",
+   "speciesName": "Zekrom",
+   "score": 92.8,
+   "fastMoves": [
+    "DRAGON_BREATH",
+    "CHARGE_BEAM"
+   ],
+   "chargedMoves": [
+    "WILD_CHARGE",
+    "OUTRAGE",
+    "FUSION_BOLT",
+    "FLASH_CANNON",
+    "CRUNCH"
+   ],
+   "stats": {
+    "product": 8515,
+    "atk": 243.6,
+    "def": 189.9,
+    "hp": 184
+   }
+  },
+  {
+   "speciesId": "marshadow",
+   "speciesName": "Marshadow",
+   "score": 92.6,
+   "fastMoves": [
+    "SUCKER_PUNCH",
+    "SHADOW_CLAW",
+    "POISON_JAB",
+    "COUNTER"
+   ],
+   "chargedMoves": [
+    "THUNDER_PUNCH",
+    "ROCK_SLIDE",
+    "ICE_PUNCH",
+    "FIRE_PUNCH",
+    "CLOSE_COMBAT"
+   ],
+   "stats": {
+    "product": 7539,
+    "atk": 235.2,
+    "def": 172.2,
+    "hp": 186
+   }
+  },
+  {
+   "speciesId": "reshiram_shadow",
+   "speciesName": "Reshiram (Shadow)",
+   "score": 92.5,
+   "fastMoves": [
+    "FIRE_FANG",
+    "DRAGON_BREATH"
+   ],
+   "chargedMoves": [
+    "STONE_EDGE",
+    "OVERHEAT",
+    "FUSION_FLARE",
+    "FRUSTRATION",
+    "DRACO_METEOR",
+    "CRUNCH"
+   ],
+   "stats": {
+    "product": 8515,
+    "atk": 243.6,
+    "def": 189.9,
+    "hp": 184
+   }
+  },
+  {
+   "speciesId": "eternatus",
+   "speciesName": "Eternatus",
+   "score": 91.4,
+   "fastMoves": [
+    "POISON_JAB",
+    "DRAGON_TAIL"
+   ],
+   "chargedMoves": [
+    "SLUDGE_BOMB",
+    "FLAMETHROWER",
+    "DYNAMAX_CANNON",
+    "DRAGON_PULSE"
+   ],
+   "stats": {
+    "product": 10150,
+    "atk": 246.2,
+    "def": 173.9,
+    "hp": 237
+   }
+  },
+  {
+   "speciesId": "palkia_shadow",
+   "speciesName": "Palkia (Shadow)",
+   "score": 91.4,
+   "fastMoves": [
+    "DRAGON_TAIL",
+    "DRAGON_BREATH"
+   ],
+   "chargedMoves": [
+    "HYDRO_PUMP",
+    "FRUSTRATION",
+    "FIRE_BLAST",
+    "DRACO_METEOR",
+    "AQUA_TAIL"
+   ],
+   "stats": {
+    "product": 8192,
+    "atk": 247.8,
+    "def": 193.2,
+    "hp": 171
+   }
+  },
+  {
+   "speciesId": "lugia",
+   "speciesName": "Lugia",
+   "score": 91,
+   "fastMoves": [
+    "EXTRASENSORY",
+    "DRAGON_TAIL"
+   ],
+   "chargedMoves": [
+    "SKY_ATTACK",
+    "RETURN",
+    "HYDRO_PUMP",
+    "FUTURE_SIGHT",
+    "FLY",
+    "AEROBLAST"
+   ],
+   "stats": {
+    "product": 10024,
+    "atk": 174.7,
+    "def": 273,
+    "hp": 210
+   }
+  },
+  {
+   "speciesId": "metagross_shadow",
+   "speciesName": "Metagross (Shadow)",
+   "score": 90.5,
+   "fastMoves": [
+    "ZEN_HEADBUTT",
+    "SHADOW_CLAW",
+    "FURY_CUTTER",
+    "BULLET_PUNCH"
+   ],
+   "chargedMoves": [
+    "PSYCHIC",
+    "METEOR_MASH",
+    "FRUSTRATION",
+    "FLASH_CANNON",
+    "EARTHQUAKE"
+   ],
+   "stats": {
+    "product": 8027,
+    "atk": 228.5,
+    "def": 204.1,
+    "hp": 172
+   }
+  },
+  {
+   "speciesId": "lugia_shadow",
+   "speciesName": "Lugia (Shadow)",
+   "score": 90.2,
+   "fastMoves": [
+    "EXTRASENSORY",
+    "DRAGON_TAIL"
+   ],
+   "chargedMoves": [
+    "SKY_ATTACK",
+    "HYDRO_PUMP",
+    "FUTURE_SIGHT",
+    "FRUSTRATION",
+    "FLY",
+    "AEROBLAST"
+   ],
+   "stats": {
+    "product": 10024,
+    "atk": 174.7,
+    "def": 273,
+    "hp": 210
+   }
+  },
+  {
+   "speciesId": "garchomp_shadow",
+   "speciesName": "Garchomp (Shadow)",
+   "score": 89.7,
+   "fastMoves": [
+    "MUD_SHOT",
+    "DRAGON_TAIL"
+   ],
+   "chargedMoves": [
+    "TWISTER",
+    "SAND_TOMB",
+    "OUTRAGE",
+    "FRUSTRATION",
+    "FIRE_BLAST",
+    "EARTH_POWER",
+    "EARTHQUAKE",
+    "BREAKING_SWIPE"
+   ],
+   "stats": {
+    "product": 8634,
+    "atk": 231.9,
+    "def": 174.7,
+    "hp": 213
+   }
+  }
+ ]
+}

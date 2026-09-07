@@ -1,0 +1,476 @@
+{
+ "league": "great",
+ "cp": 1500,
+ "top": [
+  {
+   "speciesId": "lickilicky",
+   "speciesName": "Lickilicky",
+   "score": 93.7,
+   "fastMoves": [
+    "ROLLOUT",
+    "LICK",
+    "ZEN_HEADBUTT"
+   ],
+   "chargedMoves": [
+    "BODY_SLAM",
+    "SHADOW_BALL",
+    "EARTHQUAKE",
+    "SOLAR_BEAM",
+    "HYPER_BEAM"
+   ],
+   "stats": {
+    "product": 2124,
+    "atk": 105.7,
+    "def": 125.5,
+    "hp": 160
+   }
+  },
+  {
+   "speciesId": "tinkaton",
+   "speciesName": "Tinkaton",
+   "score": 92.6,
+   "fastMoves": [
+    "FAIRY_WIND",
+    "ROCK_SMASH"
+   ],
+   "chargedMoves": [
+    "GIGATON_HAMMER",
+    "PLAY_ROUGH",
+    "HEAVY_SLAM",
+    "BULLDOZE",
+    "FLASH_CANNON"
+   ],
+   "stats": {
+    "product": 2110,
+    "atk": 106.2,
+    "def": 140.9,
+    "hp": 141
+   }
+  },
+  {
+   "speciesId": "altaria",
+   "speciesName": "Altaria",
+   "score": 92.2,
+   "fastMoves": [
+    "DRAGON_BREATH",
+    "PECK"
+   ],
+   "chargedMoves": [
+    "SKY_ATTACK",
+    "DRAGON_PULSE",
+    "FLAMETHROWER",
+    "MOONBLAST",
+    "DAZZLING_GLEAM",
+    "RETURN"
+   ],
+   "stats": {
+    "product": 2168,
+    "atk": 103.4,
+    "def": 151.9,
+    "hp": 138
+   }
+  },
+  {
+   "speciesId": "empoleon",
+   "speciesName": "Empoleon",
+   "score": 92.2,
+   "fastMoves": [
+    "METAL_SOUND",
+    "WATERFALL",
+    "METAL_CLAW",
+    "STEEL_WING"
+   ],
+   "chargedMoves": [
+    "HYDRO_CANNON",
+    "DRILL_PECK",
+    "FLASH_CANNON",
+    "BLIZZARD",
+    "HYDRO_PUMP"
+   ],
+   "stats": {
+    "product": 1788,
+    "atk": 125.1,
+    "def": 117,
+    "hp": 122
+   }
+  },
+  {
+   "speciesId": "mimikyu",
+   "speciesName": "Mimikyu (Busted)",
+   "score": 92.2,
+   "fastMoves": [
+    "SHADOW_CLAW",
+    "HEX"
+   ],
+   "chargedMoves": [
+    "SHADOW_SNEAK",
+    "PLAY_ROUGH",
+    "THUNDER"
+   ],
+   "stats": {
+    "product": 1842,
+    "atk": 121.5,
+    "def": 141.6,
+    "hp": 107
+   }
+  },
+  {
+   "speciesId": "altaria_shadow",
+   "speciesName": "Altaria (Shadow)",
+   "score": 91.9,
+   "fastMoves": [
+    "DRAGON_BREATH",
+    "PECK"
+   ],
+   "chargedMoves": [
+    "SKY_ATTACK",
+    "DRAGON_PULSE",
+    "FLAMETHROWER",
+    "MOONBLAST",
+    "DAZZLING_GLEAM",
+    "FRUSTRATION"
+   ],
+   "stats": {
+    "product": 2168,
+    "atk": 103.4,
+    "def": 151.9,
+    "hp": 138
+   }
+  },
+  {
+   "speciesId": "empoleon_shadow",
+   "speciesName": "Empoleon (Shadow)",
+   "score": 91.9,
+   "fastMoves": [
+    "METAL_SOUND",
+    "WATERFALL",
+    "METAL_CLAW",
+    "STEEL_WING"
+   ],
+   "chargedMoves": [
+    "HYDRO_CANNON",
+    "DRILL_PECK",
+    "FLASH_CANNON",
+    "BLIZZARD",
+    "HYDRO_PUMP",
+    "FRUSTRATION"
+   ],
+   "stats": {
+    "product": 1788,
+    "atk": 125.1,
+    "def": 117,
+    "hp": 122
+   }
+  },
+  {
+   "speciesId": "quagsire_shadow",
+   "speciesName": "Quagsire (Shadow)",
+   "score": 91.8,
+   "fastMoves": [
+    "MUD_SHOT",
+    "WATER_GUN"
+   ],
+   "chargedMoves": [
+    "AQUA_TAIL",
+    "MUD_BOMB",
+    "STONE_EDGE",
+    "DRAIN_PUNCH",
+    "SLUDGE_BOMB",
+    "EARTHQUAKE",
+    "ACID_SPRAY",
+    "FRUSTRATION"
+   ],
+   "stats": {
+    "product": 2018,
+    "atk": 111.2,
+    "def": 112.6,
+    "hp": 161
+   }
+  },
+  {
+   "speciesId": "quagsire",
+   "speciesName": "Quagsire",
+   "score": 91.7,
+   "fastMoves": [
+    "MUD_SHOT",
+    "WATER_GUN"
+   ],
+   "chargedMoves": [
+    "AQUA_TAIL",
+    "MUD_BOMB",
+    "STONE_EDGE",
+    "DRAIN_PUNCH",
+    "SLUDGE_BOMB",
+    "EARTHQUAKE",
+    "RETURN",
+    "ACID_SPRAY"
+   ],
+   "stats": {
+    "product": 2018,
+    "atk": 111.2,
+    "def": 112.6,
+    "hp": 161
+   }
+  },
+  {
+   "speciesId": "jellicent",
+   "speciesName": "Jellicent",
+   "score": 91.6,
+   "fastMoves": [
+    "HEX",
+    "BUBBLE"
+   ],
+   "chargedMoves": [
+    "SHADOW_BALL",
+    "SURF",
+    "ICE_BEAM",
+    "BUBBLE_BEAM"
+   ],
+   "stats": {
+    "product": 2102,
+    "atk": 106.6,
+    "def": 126.3,
+    "hp": 156
+   }
+  },
+  {
+   "speciesId": "forretress",
+   "speciesName": "Forretress",
+   "score": 91.5,
+   "fastMoves": [
+    "VOLT_SWITCH",
+    "BUG_BITE",
+    "STRUGGLE_BUG"
+   ],
+   "chargedMoves": [
+    "ROCK_TOMB",
+    "MIRROR_SHOT",
+    "SAND_TOMB",
+    "HEAVY_SLAM",
+    "EARTHQUAKE",
+    "RETURN"
+   ],
+   "stats": {
+    "product": 2044,
+    "atk": 109.7,
+    "def": 145.4,
+    "hp": 128
+   }
+  },
+  {
+   "speciesId": "ninetales",
+   "speciesName": "Ninetales",
+   "score": 91.4,
+   "fastMoves": [
+    "EMBER",
+    "FIRE_SPIN",
+    "FEINT_ATTACK"
+   ],
+   "chargedMoves": [
+    "WEATHER_BALL_FIRE",
+    "PSYSHOCK",
+    "ENERGY_BALL",
+    "SCORCHING_SANDS",
+    "OVERHEAT",
+    "HEAT_WAVE",
+    "FLAMETHROWER",
+    "RETURN",
+    "FIRE_BLAST",
+    "SOLAR_BEAM"
+   ],
+   "stats": {
+    "product": 1954,
+    "atk": 114.3,
+    "def": 135.5,
+    "hp": 126
+   }
+  },
+  {
+   "speciesId": "cramorant",
+   "speciesName": "Cramorant",
+   "score": 91.1,
+   "fastMoves": [
+    "WATER_GUN",
+    "PECK"
+   ],
+   "chargedMoves": [
+    "SURF",
+    "HYDRO_PUMP",
+    "FLY",
+    "DIVE"
+   ],
+   "stats": {
+    "product": 1852,
+    "atk": 121.2,
+    "def": 121.2,
+    "hp": 126
+   }
+  },
+  {
+   "speciesId": "ninetales_shadow",
+   "speciesName": "Ninetales (Shadow)",
+   "score": 91.1,
+   "fastMoves": [
+    "EMBER",
+    "FIRE_SPIN",
+    "FEINT_ATTACK"
+   ],
+   "chargedMoves": [
+    "WEATHER_BALL_FIRE",
+    "PSYSHOCK",
+    "ENERGY_BALL",
+    "SCORCHING_SANDS",
+    "OVERHEAT",
+    "HEAT_WAVE",
+    "FLAMETHROWER",
+    "SOLAR_BEAM",
+    "FIRE_BLAST",
+    "FRUSTRATION"
+   ],
+   "stats": {
+    "product": 1954,
+    "atk": 114.3,
+    "def": 135.5,
+    "hp": 126
+   }
+  },
+  {
+   "speciesId": "feraligatr",
+   "speciesName": "Feraligatr",
+   "score": 91,
+   "fastMoves": [
+    "SHADOW_CLAW",
+    "WATERFALL",
+    "ICE_FANG",
+    "WATER_GUN",
+    "BITE"
+   ],
+   "chargedMoves": [
+    "HYDRO_CANNON",
+    "CRUNCH",
+    "ICE_BEAM",
+    "HYDRO_PUMP"
+   ],
+   "stats": {
+    "product": 1818,
+    "atk": 123.8,
+    "def": 117.3,
+    "hp": 125
+   }
+  },
+  {
+   "speciesId": "forretress_shadow",
+   "speciesName": "Forretress (Shadow)",
+   "score": 91,
+   "fastMoves": [
+    "VOLT_SWITCH",
+    "BUG_BITE",
+    "STRUGGLE_BUG"
+   ],
+   "chargedMoves": [
+    "ROCK_TOMB",
+    "MIRROR_SHOT",
+    "SAND_TOMB",
+    "HEAVY_SLAM",
+    "EARTHQUAKE",
+    "FRUSTRATION"
+   ],
+   "stats": {
+    "product": 2044,
+    "atk": 109.7,
+    "def": 145.4,
+    "hp": 128
+   }
+  },
+  {
+   "speciesId": "corsola_galarian",
+   "speciesName": "Corsola (Galarian)",
+   "score": 90.9,
+   "fastMoves": [
+    "ASTONISH",
+    "TACKLE"
+   ],
+   "chargedMoves": [
+    "NIGHT_SHADE",
+    "POWER_GEM",
+    "ROCK_BLAST"
+   ],
+   "stats": {
+    "product": 2252,
+    "atk": 99.3,
+    "def": 163,
+    "hp": 139
+   }
+  },
+  {
+   "speciesId": "jumpluff",
+   "speciesName": "Jumpluff",
+   "score": 90.9,
+   "fastMoves": [
+    "FAIRY_WIND",
+    "BULLET_SEED",
+    "INFESTATION"
+   ],
+   "chargedMoves": [
+    "ENERGY_BALL",
+    "ACROBATICS",
+    "AERIAL_ACE",
+    "DAZZLING_GLEAM",
+    "RETURN",
+    "SOLAR_BEAM"
+   ],
+   "stats": {
+    "product": 2323,
+    "atk": 96.7,
+    "def": 156.9,
+    "hp": 153
+   }
+  },
+  {
+   "speciesId": "clodsire",
+   "speciesName": "Clodsire",
+   "score": 90.8,
+   "fastMoves": [
+    "POISON_STING",
+    "MUD_SHOT"
+   ],
+   "chargedMoves": [
+    "EARTHQUAKE",
+    "STONE_EDGE",
+    "SLUDGE_BOMB",
+    "MEGAHORN",
+    "WATER_PULSE",
+    "ACID_SPRAY"
+   ],
+   "stats": {
+    "product": 2367,
+    "atk": 95,
+    "def": 119.7,
+    "hp": 208
+   }
+  },
+  {
+   "speciesId": "corviknight",
+   "speciesName": "Corviknight",
+   "score": 90.7,
+   "fastMoves": [
+    "SAND_ATTACK",
+    "AIR_SLASH",
+    "STEEL_WING"
+   ],
+   "chargedMoves": [
+    "AIR_CUTTER",
+    "IRON_HEAD",
+    "PAYBACK",
+    "SKY_ATTACK",
+    "RETURN"
+   ],
+   "stats": {
+    "product": 2097,
+    "atk": 106.9,
+    "def": 130.6,
+    "hp": 150
+   }
+  }
+ ]
+}

@@ -24,6 +24,7 @@ import (
 	"syscall"
 
 	"github.com/bakytn/pogo/internal/bot"
+	"github.com/bakytn/pogo/internal/breaker"
 	"github.com/bakytn/pogo/internal/engine"
 	"github.com/bakytn/pogo/internal/service"
 )
@@ -79,6 +80,12 @@ func run(args []string) error {
 
 	svc := service.New(gd)
 
+	// Register the breaker command on the shared Service so `list`/help show
+	// it and the Discord bot auto-registers it. The adapter bridges breaker's
+	// (GameData, Loader, Request) Run onto the service.Command interface.
+	breakerLoader := breaker.NewLoader("")
+	svc.Register(&breakerCommand{loader: breakerLoader})
+
 	// `list` sub-command: show registered commands.
 	if strings.ToLower(rest[0]) == "list" {
 		fmt.Print(svc.Help())
@@ -120,6 +127,33 @@ func run(args []string) error {
 
 // runBot launches the Discord bot and blocks until interrupted (SIGINT/SIGTERM)
 // or until the Discord session errors out.
+// breakerCommand adapts the breaker package's (GameData, Loader, Request)
+// command onto the service.Command interface so it is registered on the
+// shared Service. This lives in main (not in breaker or service) to avoid an
+// import cycle: breaker must not import service, and service must not import
+// breaker.
+type breakerCommand struct {
+	loader *breaker.Loader
+}
+
+func (c *breakerCommand) Name() string        { return breaker.NewCommand().Name() }
+func (c *breakerCommand) Description() string { return breaker.NewCommand().Description() }
+func (c *breakerCommand) Run(ctx context.Context, svc *service.Service, req service.Request) (string, error) {
+	ivs := req.IVs
+	if ivs == nil {
+		ivs = &engine.IVs{Atk: 15, Def: 15, Hp: 15}
+	}
+	dump := req.Extra != nil && req.Extra["dump"] == "1"
+	return breaker.NewCommand().Run(svc.Data, c.loader, breaker.Request{
+		Name:   req.Name,
+		IVs:    *ivs,
+		CP:     req.CP,
+		Shadow: req.Shadow,
+		League: req.League,
+		Dump:   dump,
+	})
+}
+
 func runBot(token string, svc *service.Service) error {
 	b, err := bot.New(token, svc)
 	if err != nil {
@@ -184,8 +218,14 @@ func parseRequest(name string, args []string) (service.Request, error) {
 			req.SortStat = engine.SortOverall
 		case "shadow":
 			req.Shadow = true
+		case "little", "great", "ultra", "master":
+			req.League = w
+		case "dump":
+			req.Extra = map[string]string{"dump": "1"}
 		}
 	}
+	// A trailing league CP (500/1500/2500/10000) sets req.CP, which the
+	// breaker command maps to a league. Already handled by the int logic above.
 	return req, nil
 }
 

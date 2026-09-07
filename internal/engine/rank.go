@@ -32,14 +32,17 @@ type RankResult struct {
 	Species   string
 	SpeciesID string
 	Types     []string
-	CP        int      // target league CP used for the rank
-	Level     float64  // level at which the Pokémon sits at the given CP/IVs
-	IVs       IVs      // the IV combination that was ranked
-	Stats     Stats    // derived battle stats
-	ActualCP  int      // the CP the ranked IV combo actually reaches at its level
-	Rank      int      // 1-based rank (1 = best); 0 if the IV combo wasn't reachable
-	Count     int      // total reachable IV combinations for this Pokémon/CP
+	CP        int     // target league CP used for the rank
+	Level     float64 // level at which the Pokémon sits at the given CP/IVs
+	IVs       IVs     // the IV combination that was ranked
+	Stats     Stats   // derived battle stats
+	ActualCP  int     // the CP the ranked IV combo actually reaches at its level
+	Rank      int     // 1-based rank (1 = best); 0 if the IV combo wasn't reachable
+	Count     int     // total reachable IV combinations for this Pokémon/CP
 }
+
+// IVFloor (public wrapper) is the IV floor; see ivFloor.
+func (p *Pokemon) IVFloor() int { return p.ivFloor() }
 
 // ivFloor mirrors the IV floor rules from pvpoke's generateIVCombinations:
 //   - legendary/ultrabeast (not wildlegendary): 1
@@ -71,6 +74,59 @@ func (p *Pokemon) ivFloor() int {
 // legendary will be filtered by the CP target, so the results are identical.
 func levelCapForCP(_ int) float64 {
 	return 50
+}
+
+// LevelForIVs runs the same CP-walk that GenerateIVCombinations uses for a
+// single (IV) combo: starting at the level floor, it climbs in 0.5 steps
+// until the combo's CP reaches the league ceiling, then steps back if it
+// overshot. This is the "battle-ready level" for that exact IV combo in the
+// league, which is what the breaker / damage-delta math evaluates.
+func (p *Pokemon) LevelForIVs(ivs IVs, targetCP int) float64 {
+	baseLevelFloor := 1.0
+	if p.LevelFloor > 0 {
+		baseLevelFloor = p.LevelFloor
+	}
+	levelCap := levelCapForCP(targetCP)
+
+	// Little Cup (targetCP <= 500) ignores the level floor; everything else
+	// starts at baseLevelFloor. (pvpoke lines 542-546)
+	level := 0.5
+	if targetCP > 500 {
+		level = baseLevelFloor
+	}
+
+	calcCP := 0
+	for level < levelCap && calcCP < targetCP {
+		level += 0.5
+		m := cpForLevel(level)
+		calcCP = p.CPAt(m, ivs)
+	}
+	if calcCP > targetCP {
+		level -= 0.5
+	}
+	return level
+}
+
+// BattleState returns the battle-ready stats for the Pokémon at the given IV
+// combo in the given league CP: the CP-walked level, the CPM at that level,
+// and the resulting (shadow-adjusted) atk/def/hp. This is the single source
+// of truth for "what stats does this IV combo fight with in this league".
+func (p *Pokemon) BattleState(ivs IVs, targetCP int, shadow bool) BattleState {
+	level := p.LevelForIVs(ivs, targetCP)
+	m := cpForLevel(level)
+	st := p.SetStats(m, ivs)
+	if shadow {
+		st.Atk *= DmgShadowAtk
+		st.Def *= DmgShadowDef
+	}
+	return BattleState{
+		Level:   level,
+		IVs:     ivs,
+		Atk:     st.Atk,
+		Def:     st.Def,
+		Hp:      st.Hp,
+		Product: st.Atk * st.Def * st.Hp / 1000,
+	}
 }
 
 // GenerateIVCombinations enumerates every reachable (IV, level) combination
@@ -255,4 +311,3 @@ func FormatTypes(types []string) string {
 	}
 	return out
 }
-

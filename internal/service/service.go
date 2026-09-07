@@ -29,6 +29,10 @@ type Request struct {
 	// Shadow flags the user asked for the shadow form of a species.
 	Shadow bool
 
+	// League is the named league for commands that operate against a league's
+	// top meta (e.g. `breaker`): little / great / ultra / master, or a CP.
+	League string
+
 	// Extra carries arbitrary named values for commands that need more than
 	// the common fields above.
 	Extra map[string]string

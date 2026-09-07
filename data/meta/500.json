@@ -1,0 +1,419 @@
+{
+ "league": "little",
+ "cp": 500,
+ "top": [
+  {
+   "speciesId": "skrelp",
+   "speciesName": "Skrelp",
+   "score": 95.9,
+   "fastMoves": [
+    "WATER_GUN",
+    "ACID"
+   ],
+   "chargedMoves": [
+    "WATER_PULSE",
+    "TWISTER",
+    "SLUDGE_BOMB",
+    "AQUA_TAIL"
+   ],
+   "stats": {
+    "product": 383,
+    "atk": 64,
+    "def": 70.2,
+    "hp": 85
+   }
+  },
+  {
+   "speciesId": "ducklett",
+   "speciesName": "Ducklett",
+   "score": 93,
+   "fastMoves": [
+    "WING_ATTACK",
+    "WATER_GUN"
+   ],
+   "chargedMoves": [
+    "RETURN",
+    "BUBBLE_BEAM",
+    "BRAVE_BIRD",
+    "AERIAL_ACE"
+   ],
+   "stats": {
+    "product": 435,
+    "atk": 57.5,
+    "def": 71.3,
+    "hp": 106
+   }
+  },
+  {
+   "speciesId": "carvanha_shadow",
+   "speciesName": "Carvanha (Shadow)",
+   "score": 89.9,
+   "fastMoves": [
+    "SNARL",
+    "BITE"
+   ],
+   "chargedMoves": [
+    "POISON_FANG",
+    "FRUSTRATION",
+    "CRUNCH",
+    "AQUA_JET"
+   ],
+   "stats": {
+    "product": 245,
+    "atk": 101.4,
+    "def": 30.6,
+    "hp": 79
+   }
+  },
+  {
+   "speciesId": "fomantis",
+   "speciesName": "Fomantis",
+   "score": 89.4,
+   "fastMoves": [
+    "RAZOR_LEAF",
+    "LEAFAGE",
+    "FURY_CUTTER"
+   ],
+   "chargedMoves": [
+    "TRAILBLAZE",
+    "LEAF_BLADE",
+    "GRASS_KNOT",
+    "ENERGY_BALL"
+   ],
+   "stats": {
+    "product": 345,
+    "atk": 71.5,
+    "def": 53.6,
+    "hp": 90
+   }
+  },
+  {
+   "speciesId": "pumpkaboo_super",
+   "speciesName": "Pumpkaboo (Super)",
+   "score": 88.9,
+   "fastMoves": [
+    "RAZOR_LEAF",
+    "ASTONISH"
+   ],
+   "chargedMoves": [
+    "SHADOW_SNEAK",
+    "GRASS_KNOT",
+    "FOUL_PLAY"
+   ],
+   "stats": {
+    "product": 385,
+    "atk": 64.6,
+    "def": 69.9,
+    "hp": 85
+   }
+  },
+  {
+   "speciesId": "foongus",
+   "speciesName": "Foongus",
+   "score": 88.6,
+   "fastMoves": [
+    "FEINT_ATTACK",
+    "ASTONISH"
+   ],
+   "chargedMoves": [
+    "GRASS_KNOT",
+    "ENERGY_BALL",
+    "BODY_SLAM"
+   ],
+   "stats": {
+    "product": 409,
+    "atk": 60.9,
+    "def": 61.5,
+    "hp": 109
+   }
+  },
+  {
+   "speciesId": "frillish",
+   "speciesName": "Frillish",
+   "score": 87.6,
+   "fastMoves": [
+    "HEX",
+    "BUBBLE"
+   ],
+   "chargedMoves": [
+    "OMINOUS_WIND",
+    "NIGHT_SHADE",
+    "ICE_BEAM"
+   ],
+   "stats": {
+    "product": 396,
+    "atk": 62.6,
+    "def": 77,
+    "hp": 82
+   }
+  },
+  {
+   "speciesId": "dewpider",
+   "speciesName": "Dewpider",
+   "score": 87.3,
+   "fastMoves": [
+    "INFESTATION",
+    "BUG_BITE"
+   ],
+   "chargedMoves": [
+    "WATER_PULSE",
+    "MIRROR_COAT",
+    "BUBBLE_BEAM"
+   ],
+   "stats": {
+    "product": 456,
+    "atk": 54.6,
+    "def": 90.6,
+    "hp": 92
+   }
+  },
+  {
+   "speciesId": "pumpkaboo_average",
+   "speciesName": "Pumpkaboo (Average)",
+   "score": 87.3,
+   "fastMoves": [
+    "RAZOR_LEAF",
+    "ASTONISH"
+   ],
+   "chargedMoves": [
+    "SHADOW_SNEAK",
+    "GRASS_KNOT",
+    "FOUL_PLAY"
+   ],
+   "stats": {
+    "product": 371,
+    "atk": 67.3,
+    "def": 72.5,
+    "hp": 76
+   }
+  },
+  {
+   "speciesId": "foongus_shadow",
+   "speciesName": "Foongus (Shadow)",
+   "score": 87.2,
+   "fastMoves": [
+    "FEINT_ATTACK",
+    "ASTONISH"
+   ],
+   "chargedMoves": [
+    "GRASS_KNOT",
+    "FRUSTRATION",
+    "ENERGY_BALL",
+    "BODY_SLAM"
+   ],
+   "stats": {
+    "product": 409,
+    "atk": 60.9,
+    "def": 61.5,
+    "hp": 109
+   }
+  },
+  {
+   "speciesId": "pumpkaboo_large",
+   "speciesName": "Pumpkaboo (Large)",
+   "score": 87.2,
+   "fastMoves": [
+    "RAZOR_LEAF",
+    "ASTONISH"
+   ],
+   "chargedMoves": [
+    "SHADOW_SNEAK",
+    "GRASS_KNOT",
+    "FOUL_PLAY"
+   ],
+   "stats": {
+    "product": 378,
+    "atk": 65.7,
+    "def": 71,
+    "hp": 81
+   }
+  },
+  {
+   "speciesId": "pumpkaboo_small",
+   "speciesName": "Pumpkaboo (Small)",
+   "score": 86.5,
+   "fastMoves": [
+    "RAZOR_LEAF",
+    "ASTONISH"
+   ],
+   "chargedMoves": [
+    "SHADOW_SNEAK",
+    "GRASS_KNOT",
+    "FOUL_PLAY"
+   ],
+   "stats": {
+    "product": 366,
+    "atk": 68.3,
+    "def": 73.2,
+    "hp": 73
+   }
+  },
+  {
+   "speciesId": "ducklett_shadow",
+   "speciesName": "Ducklett (Shadow)",
+   "score": 86.4,
+   "fastMoves": [
+    "WING_ATTACK",
+    "WATER_GUN"
+   ],
+   "chargedMoves": [
+    "FRUSTRATION",
+    "BUBBLE_BEAM",
+    "BRAVE_BIRD",
+    "AERIAL_ACE"
+   ],
+   "stats": {
+    "product": 435,
+    "atk": 57.5,
+    "def": 71.3,
+    "hp": 106
+   }
+  },
+  {
+   "speciesId": "lileep_shadow",
+   "speciesName": "Lileep (Shadow)",
+   "score": 86.3,
+   "fastMoves": [
+    "INFESTATION",
+    "BULLET_SEED",
+    "ACID"
+   ],
+   "chargedMoves": [
+    "MIRROR_COAT",
+    "GRASS_KNOT",
+    "FRUSTRATION",
+    "ANCIENT_POWER"
+   ],
+   "stats": {
+    "product": 437,
+    "atk": 56.9,
+    "def": 84.3,
+    "hp": 91
+   }
+  },
+  {
+   "speciesId": "binacle",
+   "speciesName": "Binacle",
+   "score": 85.8,
+   "fastMoves": [
+    "SCRATCH",
+    "MUD_SLAP"
+   ],
+   "chargedMoves": [
+    "DIG",
+    "CROSS_CHOP",
+    "ANCIENT_POWER"
+   ],
+   "stats": {
+    "product": 405,
+    "atk": 61,
+    "def": 79.8,
+    "hp": 83
+   }
+  },
+  {
+   "speciesId": "litwick",
+   "speciesName": "Litwick",
+   "score": 85.6,
+   "fastMoves": [
+    "EMBER",
+    "ASTONISH"
+   ],
+   "chargedMoves": [
+    "MYSTICAL_FIRE",
+    "HEAT_WAVE",
+    "FLAME_CHARGE",
+    "FLAME_BURST"
+   ],
+   "stats": {
+    "product": 375,
+    "atk": 66,
+    "def": 63.7,
+    "hp": 89
+   }
+  },
+  {
+   "speciesId": "carvanha",
+   "speciesName": "Carvanha",
+   "score": 84.9,
+   "fastMoves": [
+    "SNARL",
+    "BITE"
+   ],
+   "chargedMoves": [
+    "POISON_FANG",
+    "CRUNCH",
+    "AQUA_JET"
+   ],
+   "stats": {
+    "product": 245,
+    "atk": 101.4,
+    "def": 30.6,
+    "hp": 79
+   }
+  },
+  {
+   "speciesId": "lileep",
+   "speciesName": "Lileep",
+   "score": 84.8,
+   "fastMoves": [
+    "INFESTATION",
+    "BULLET_SEED",
+    "ACID"
+   ],
+   "chargedMoves": [
+    "MIRROR_COAT",
+    "GRASS_KNOT",
+    "ANCIENT_POWER"
+   ],
+   "stats": {
+    "product": 437,
+    "atk": 56.9,
+    "def": 84.3,
+    "hp": 91
+   }
+  },
+  {
+   "speciesId": "litwick_shadow",
+   "speciesName": "Litwick (Shadow)",
+   "score": 84.1,
+   "fastMoves": [
+    "EMBER",
+    "ASTONISH"
+   ],
+   "chargedMoves": [
+    "MYSTICAL_FIRE",
+    "HEAT_WAVE",
+    "FRUSTRATION",
+    "FLAME_CHARGE",
+    "FLAME_BURST"
+   ],
+   "stats": {
+    "product": 375,
+    "atk": 66,
+    "def": 63.7,
+    "hp": 89
+   }
+  },
+  {
+   "speciesId": "tentacool",
+   "speciesName": "Tentacool",
+   "score": 82.8,
+   "fastMoves": [
+    "POISON_STING",
+    "BUBBLE"
+   ],
+   "chargedMoves": [
+    "WRAP",
+    "WATER_PULSE",
+    "BUBBLE_BEAM"
+   ],
+   "stats": {
+    "product": 425,
+    "atk": 58.3,
+    "def": 92,
+    "hp": 79
+   }
+  }
+ ]
+}

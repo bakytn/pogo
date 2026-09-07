@@ -28,16 +28,16 @@ type BaseStats struct {
 // battle-independent values (CP, stats, IV rank). Extra fields from the game
 // data (moves, tags, family) are kept to make the model extensible.
 type Pokemon struct {
-	Dex         int      `json:"dex"`
-	SpeciesName string   `json:"speciesName"`
-	SpeciesID   string   `json:"speciesId"`
-	BaseStats   BaseStats `json:"baseStats"`
-	Types       []string `json:"types"`
-	FastMoves   []string `json:"fastMoves"`
-	ChargedMoves []string `json:"chargedMoves"`
-	Tags        []string `json:"tags"`
-	DefaultIVs  *DefaultIVs `json:"defaultIVs,omitempty"`
-	Level25CP   int        `json:"level25CP"`
+	Dex          int         `json:"dex"`
+	SpeciesName  string      `json:"speciesName"`
+	SpeciesID    string      `json:"speciesId"`
+	BaseStats    BaseStats   `json:"baseStats"`
+	Types        []string    `json:"types"`
+	FastMoves    []string    `json:"fastMoves"`
+	ChargedMoves []string    `json:"chargedMoves"`
+	Tags         []string    `json:"tags"`
+	DefaultIVs   *DefaultIVs `json:"defaultIVs,omitempty"`
+	Level25CP    int         `json:"level25CP"`
 
 	// LevelFloor is the minimum level a reachable IV combination may sit at
 	// (pvpoke's baseLevelFloor). Most Pokémon are 1; exclusives/legendaries
@@ -45,19 +45,19 @@ type Pokemon struct {
 	LevelFloor float64 `json:"levelFloor"`
 
 	// Runtime state.
-	CP         int       `json:"-"`
-	Level      float64   `json:"-"`
-	IVs        IVs       `json:"-"`
-	Stats      Stats     `json:"-"`
-	MegaLevel  int       `json:"-"`
+	CP        int     `json:"-"`
+	Level     float64 `json:"-"`
+	IVs       IVs     `json:"-"`
+	Stats     Stats   `json:"-"`
+	MegaLevel int     `json:"-"`
 }
 
 // DefaultIVs mirrors the per-CP default IV objects in the game data.
 type DefaultIVs struct {
-	CP500   []float64 `json:"cp500"`
-	CP1500  []float64 `json:"cp1500"`
-	CP2500  []float64 `json:"cp2500"`
-	CP10000 []float64 `json:"cp10000"`
+	CP500    []float64 `json:"cp500"`
+	CP1500   []float64 `json:"cp1500"`
+	CP2500   []float64 `json:"cp2500"`
+	CP10000  []float64 `json:"cp10000"`
 	CP500L40 []float64 `json:"cp500l40"`
 }
 
@@ -70,17 +70,18 @@ type IVs struct {
 
 // GameData is the loaded game data (a slice of Pokémon plus derived indexes).
 type GameData struct {
-	Pokemon   []Pokemon  `json:"pokemon"`
-	movesIdx  map[string]bool
+	Pokemon   []Pokemon `json:"pokemon"`
+	Moves     []Attack  `json:"moves"`
 	tagIdx    map[string]map[string]bool
 	byID      map[string]Pokemon
 	byName    map[string]Pokemon
 	byNameAll map[string][]int
+	byMove    map[string]Attack
 }
 
 // NewGameData reads and parses a gamemaster JSON file. It accepts the full
-// "gamemaster.json" object (which has a "pokemon" array) or a bare array of
-// Pokémon objects.
+// "gamemaster.json" object (which has a "pokemon" array and a "moves" array)
+// or a bare array of Pokémon objects.
 func NewGameData(path string) (*GameData, error) {
 	raw, err := os.ReadFile(path)
 	if err != nil {
@@ -90,9 +91,11 @@ func NewGameData(path string) (*GameData, error) {
 	// Try the wrapped object first.
 	var wrapped struct {
 		Pokemon []Pokemon `json:"pokemon"`
+		Moves   []Attack  `json:"moves"`
 	}
 	if err := json.Unmarshal(raw, &wrapped); err == nil && len(wrapped.Pokemon) > 0 {
 		gd.Pokemon = wrapped.Pokemon
+		gd.Moves = wrapped.Moves
 	} else {
 		// Bare array.
 		if err := json.Unmarshal(raw, &gd.Pokemon); err != nil {
@@ -115,6 +118,12 @@ func (gd *GameData) buildIndexes() {
 		if key != "" {
 			gd.byName[key] = p
 			gd.byNameAll[key] = append(gd.byNameAll[key], i)
+		}
+	}
+	if len(gd.Moves) > 0 {
+		gd.byMove = make(map[string]Attack, len(gd.Moves))
+		for i := range gd.Moves {
+			gd.byMove[gd.Moves[i].ID] = gd.Moves[i]
 		}
 	}
 }
@@ -248,6 +257,55 @@ func (p *Pokemon) SetStats(cpm float64, ivs IVs) Stats {
 		hp = 10
 	}
 	st.Hp = float64(hp)
+	return st
+}
+
+// Move returns the move table entry for a move id.
+func (gd *GameData) Move(id string) (Attack, bool) {
+	m, ok := gd.byMove[id]
+	return m, ok
+}
+
+// AllMoves returns every move whose id is in the list (deduped, in list order).
+func (gd *GameData) AllMoves(ids []string) []Attack {
+	out := make([]Attack, 0, len(ids))
+	seen := make(map[string]bool)
+	for _, id := range ids {
+		if seen[id] {
+			continue
+		}
+		m, ok := gd.byMove[id]
+		if !ok {
+			continue
+		}
+		seen[id] = true
+		out = append(out, m)
+	}
+	return out
+}
+
+// FastMoves returns the Pokémon's fast moves as Attack values.
+func (p *Pokemon) FastMovesGD(gd *GameData) []Attack {
+	return gd.AllMoves(p.FastMoves)
+}
+
+// ChargedMoves returns the Pokémon's charged moves as Attack values.
+func (p *Pokemon) ChargedMovesGD(gd *GameData) []Attack {
+	return gd.AllMoves(p.ChargedMoves)
+}
+
+// MaxStats returns the maximized battle stats at the level for the given
+// CPM: the same multiply-out as SetStats, but without any IV — the "all IVs
+// are 15" / extreme case. pvpoke's calculateBreakpoints uses the maximum
+// generateIVCombinations value, which for a fully-maxed IV floor is exactly
+// cpm*(base+15) for atk/def and floor(cpm*(base+15)) for hp.
+func (p *Pokemon) MaxStats(cpm float64, shadow bool) Stats {
+	iv := IVs{Atk: 15, Def: 15, Hp: 15}
+	st := p.SetStats(cpm, iv)
+	if shadow {
+		st.Atk *= DmgShadowAtk
+		st.Def *= DmgShadowDef
+	}
 	return st
 }
 

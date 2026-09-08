@@ -309,6 +309,61 @@ func (p *Pokemon) MaxStats(cpm float64, shadow bool) Stats {
 	return st
 }
 
+// DefaultStats returns the battle stats for the Pokémon in its "gamemaster
+// default" state at the given league CP, mirroring pvpoke's
+// Pokemon.initialize(true) "gamemaster" branch (the state the published
+// rankings are built from). It is SetStats over (IVs, level) from
+// DefaultCombo, with shadow multipliers folded in when shadow is set.
+func (p *Pokemon) DefaultStats(targetCP int, shadow bool) Stats {
+	ivs, level := p.DefaultCombo(targetCP)
+	st := p.SetStats(cpForLevel(level), ivs)
+	if shadow {
+		st.Atk *= DmgShadowAtk
+		st.Def *= DmgShadowDef
+	}
+	return st
+}
+
+// DefaultCombo returns the IVs and level of the Pokémon in its "gamemaster
+// default" state at the given league CP, mirroring pvpoke's
+// Pokemon.initialize(true) "gamemaster" branch (the state the published
+// rankings are built from):
+//
+//   - CP < 10000: read the per-CP row of the game-data defaultIVs table
+//     ([level, atkIV, defIV, hpIV]); the level is clamped to the 50 cap.
+//   - master (10000): there is no table row, so use 15/15/15 at level 50.
+//   - a missing/empty row falls back to 15/15/15 at level 50 (pvpoke's own
+//     fallback when no valid combination exists).
+func (p *Pokemon) DefaultCombo(targetCP int) (IVs, float64) {
+	ivs := IVs{Atk: 15, Def: 15, Hp: 15}
+	level := 50.0
+	if targetCP != 10000 {
+		if c := p.defaultIVCombo(targetCP); c != nil && len(c) == 4 {
+			level = math.Min(50.0, c[0])
+			ivs = IVs{Atk: int(c[1]), Def: int(c[2]), Hp: int(c[3])}
+		}
+	}
+	return ivs, level
+}
+
+// defaultIVCombo returns the per-CP row of the defaultIVs table for the given
+// league CP: [level, atkIV, defIV, hpIV]. Returns nil when the row is absent
+// (e.g. no cp500 entry for a species that can't appear in little cup).
+func (p *Pokemon) defaultIVCombo(targetCP int) []float64 {
+	if p.DefaultIVs == nil {
+		return nil
+	}
+	switch targetCP {
+	case 500:
+		return p.DefaultIVs.CP500
+	case 1500:
+		return p.DefaultIVs.CP1500
+	case 2500:
+		return p.DefaultIVs.CP2500
+	}
+	return nil
+}
+
 // DefaultDataDir returns the default location of game data relative to CWD.
 func DefaultDataDir() string { return "data" }
 

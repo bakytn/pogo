@@ -100,11 +100,30 @@ func TestBreakerDumpWellFormed(t *testing.T) {
 	if len(lines) < 1 || !strings.HasPrefix(lines[0], "STATES ") {
 		t.Fatalf("bad dump head: %q", firstLine(lines))
 	}
-	if n := len(strings.Fields(lines[0])) - 1; n != 4 {
-		t.Fatalf("STATES has %d values, want 4: %q", n, lines[0])
+	// 4 attacker atk values + 4 attacker def values (needed for bulkpoint).
+	if n := len(strings.Fields(lines[0])) - 1; n != 8 {
+		t.Fatalf("STATES has %d values, want 8: %q", n, lines[0])
 	}
 	if !strings.Contains(dump, "OPP ") {
 		t.Fatal("dump has no OPP blocks")
+	}
+	// Each opponent carries its re-derived default-IV stats and a bulkpoint
+	// (fast-move-against-you) line.
+	oppCount, bulkCount := 0, 0
+	for _, l := range lines[1:] {
+		f := strings.Fields(l)
+		switch {
+		case len(f) >= 3 && f[0] == "OPP":
+			oppCount++
+		case len(f) >= 5 && f[2] == "BULK":
+			bulkCount++
+		}
+	}
+	if oppCount == 0 {
+		t.Fatal("dump has no OPP lines")
+	}
+	if bulkCount == 0 {
+		t.Fatal("dump has no BULK (bulkpoint) lines")
 	}
 }
 

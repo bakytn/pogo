@@ -74,20 +74,31 @@ func (c *Command) Run(gd *engine.GameData, loader *Loader, req Request) (string,
 // writeDump emits a machine-readable, line-oriented form of the report for
 // exact diffing against the Python oracle (bp_ref.py). Format:
 //
-//	STATES now/rank1/maxatk/maxdef atk values (the four canonical IV states)
+//	STATES <nowA rank1A maxatkA maxdefA> <nowD rank1D maxatkD maxdefD>
+//	    the user's four IV states' full-precision atk and def, in stateOrder.
 //	OPP <rank> <shadow 0/1> <oppSpeciesId>
 //	<oppRank> <shadow 0/1> <moveId> <fast 0/1> <now> <rank1> <maxatk> <maxdef>
+//	    one line per user (break) move: damage dealt to the meta per state.
+//	<oppRank> <shadow 0/1> BULK <moveId> <now> <rank1> <maxatk> <maxdef>
+//	    the meta's fast move hitting the user per state (the bulkpoint side).
 func writeDump(b *strings.Builder, a *Analyzer, league *League, opponents []*Opponent) {
-	// The four canonical IV states' attack values at full precision, so the
-	// oracle can validate the damage math independent of re-implementing the
-	// CP walk (rank1 / level selection is already validated by pvpoke_ref.py).
-	var atkVals []float64
+	// The four canonical IV states' attack and defense values at full
+	// precision, so the oracle can validate both the break (user atk → opp
+	// def) and bulkpoint (opp atk → user def) damage math independently of
+	// re-implementing the CP walk (rank1 / level selection is already validated
+	// by pvpoke_ref.py).
+	var atkVals, defVals []float64
 	for _, name := range stateOrder {
-		atkVals = append(atkVals, a.states[name].Bs.Atk)
+		obs := a.states[name].Bs
+		atkVals = append(atkVals, obs.Atk)
+		defVals = append(defVals, obs.Def)
 	}
-	sv := make([]string, len(atkVals))
-	for i, v := range atkVals {
-		sv[i] = strconv.FormatFloat(v, 'g', -1, 64) // shortest round-trippable form
+	sv := make([]string, 0, len(atkVals)+len(defVals))
+	for _, v := range atkVals {
+		sv = append(sv, strconv.FormatFloat(v, 'g', -1, 64)) // shortest round-trippable form
+	}
+	for _, v := range defVals {
+		sv = append(sv, strconv.FormatFloat(v, 'g', -1, 64))
 	}
 	fmt.Fprintf(b, "STATES %s\n", strings.Join(sv, " "))
 	for i, o := range opponents {
@@ -96,6 +107,7 @@ func writeDump(b *strings.Builder, a *Analyzer, league *League, opponents []*Opp
 			sh = 1
 		}
 		fmt.Fprintf(b, "OPP %d %d %s\n", i+1, sh, o.Entry.SpeciesID)
+		// Break side: the user's moves.
 		for _, m := range o.Moves {
 			fast := 0
 			if m.Fast {
@@ -104,6 +116,13 @@ func writeDump(b *strings.Builder, a *Analyzer, league *League, opponents []*Opp
 			s := m.States
 			fmt.Fprintf(b, "%d %d %s %d %d %d %d %d\n",
 				i+1, sh, m.Move.ID, fast,
+				s[idx(StateNow)], s[idx(StateRank1)], s[idx(StateMaxAtk)], s[idx(StateMaxDef)])
+		}
+		// Bulkpoint side: the meta's fast move hitting the user.
+		for _, m := range o.Bulk {
+			s := m.States
+			fmt.Fprintf(b, "%d %d BULK %s %d %d %d %d\n",
+				i+1, sh, m.Move.ID,
 				s[idx(StateNow)], s[idx(StateRank1)], s[idx(StateMaxAtk)], s[idx(StateMaxDef)])
 		}
 	}
@@ -136,7 +155,9 @@ func writeReport(b *strings.Builder, a *Analyzer, league *League, opponents []*O
 		first = false
 	}
 	b.WriteString("\n\n")
-	b.WriteString("damage = now / Rank 1 / 15-0-0 / 0-15-0\n\n")
+	b.WriteString("damage = now / Rank 1 / 15-0-0 / 0-15-0  (your 4 Add-&-Compare IV states)\n")
+	b.WriteString("⚡ = your move hitting the meta (break) · 🛡 = meta's move hitting you (bulk)\n")
+	b.WriteString("meta fights at its default IVs\n\n")
 
 	for i, o := range opponents {
 		if i > 0 {
@@ -146,7 +167,7 @@ func writeReport(b *strings.Builder, a *Analyzer, league *League, opponents []*O
 		if o.Shadow {
 			label += " (shadow)"
 		}
-		fmt.Fprintf(b, "%d. %s%s\n", i+1, label, typeLine(o.Types))
+		fmt.Fprintf(b, "%d. %s%s%s\n", i+1, label, typeLine(o.Types), oppDefaults(o))
 		for _, m := range o.Moves {
 			name := m.Move.Name
 			if name == "" {
@@ -167,7 +188,31 @@ func writeReport(b *strings.Builder, a *Analyzer, league *League, opponents []*O
 			}
 			b.WriteString(line + "\n")
 		}
+		for _, m := range o.Bulk {
+			name := m.Move.Name
+			if name == "" {
+				name = titleCase(m.Move.ID)
+			}
+			st := m.States
+			line := fmt.Sprintf("🛡 %s %2d / %2d / %2d / %2d", pad(name, 12), st[idx(StateNow)], st[idx(StateRank1)], st[idx(StateMaxAtk)], st[idx(StateMaxDef)])
+			// Larger = the meta hits you harder. Highlight the jump to your
+			// thinnest (lowest-def) state vs your current state.
+			if md := max(st) - st[idx(StateNow)]; md > 0 {
+				line += fmt.Sprintf("  worst +%d", md)
+			}
+			b.WriteString(line + "\n")
+		}
 	}
+}
+
+// oppDefaults renders the meta's default-IV line for the report (the IVs and
+// level it fights at, per the defaultIVs table).
+func oppDefaults(o *Opponent) string {
+	iv := fmt.Sprintf(" (IVs %d/%d/%d", o.IVs.Atk, o.IVs.Def, o.IVs.Hp)
+	if o.Level > 0 {
+		iv += fmt.Sprintf(" · Lv%.1f", o.Level)
+	}
+	return iv + ")"
 }
 
 func typeLine(types []string) string {

@@ -74,15 +74,24 @@ type MoveDamage struct {
 	MaxDelta int   // max(states) - States[now]    (the best any extreme gives)
 }
 
-// Opponent is one top meta Pokémon the user is broken down against. It is
-// fixed at its rank-1 stats (from the meta file) plus shadow multipliers.
+// Opponent is one top meta Pokémon the user is broken down against. It fights
+// at its **default-IV** stats — the same state pvpoke's ranker builds the
+// published rankings from (see engine.Pokemon.DefaultStats, mirroring
+// Pokemon.initialize(true) "gamemaster") — plus shadow multipliers when the
+// form is shadow. The user's moves (the "break" side) and the meta's own moves
+// (the "bulkpoint" side) are both evaluated across the user's four
+// Add-&-Compare IV states.
 type Opponent struct {
 	Entry  TopMetaEntry
 	Types  []string
 	Shadow bool
-	Atk    float64 // effective atk (shadow-adjusted)
-	Def    float64 // effective def (shadow-adjusted)
+	IVs    engine.IVs // the default IVs the meta fights at (display)
+	Level  float64    // the default level the meta fights at (display)
+	Atk    float64    // effective atk (shadow-adjusted, full precision)
+	Def    float64    // effective def (shadow-adjusted, full precision)
+	Hp     float64    // effective HP (shadow-adjusted, full precision)
 	Moves  []MoveDamage
+	Bulk   []MoveDamage // the meta's moves hitting the user (bulkpoint side)
 }
 
 // Analyzer holds the inputs to a single breaker analysis and caches the user's
@@ -166,52 +175,66 @@ func (a *Analyzer) Analyze(league *League) []*Opponent {
 	return out
 }
 
-// analyzeOpponent fixes the opponent at its rank-1 stats and computes each of
-// the user's moves' damage across the IV states.
+// analyzeOpponent fixes the opponent at its default-IV stats and computes both
+// sides of the matchup across the user's four Add-&-Compare IV states:
+//   - Moves: the user's moves hitting the meta (the "break" side).
+//   - Bulk:  the meta's primary fast move hitting the user (the "bulkpoint"
+//     side) — the single value pvpoke's matrix shows per matchup.
 func (a *Analyzer) analyzeOpponent(e *TopMetaEntry) *Opponent {
 	opp := &Opponent{Entry: *e}
 
-	// Opponent types: resolve from the speciesId (base form for shadow).
+	// Resolve the meta's species from the game data (by id, falling back to the
+	// base form and a name match). The full entry is what we re-derive stats
+	// from.
 	id := e.SpeciesID
-	opp.Shadow = isShadowID(id)
+	var meta engine.Pokemon
+	haveMeta := false
 	if poke, ok := a.gd.ByID(id); ok {
-		opp.Types = poke.Types
+		meta, haveMeta = poke, true
 	} else if poke, ok := a.gd.ByID(baseID(id)); ok {
-		opp.Types = poke.Types
+		meta, haveMeta = poke, true
 	} else if cands := a.gd.Candidates(e.SpeciesName); len(cands) == 1 {
-		opp.Types = cands[0].P.Types
+		meta, haveMeta = cands[0].P, true
 	}
 
-	// Fixed at its rank-1 (max stat product) stats from the meta file; shadow
-	// forms get the site's atk/def multipliers.
-	opp.Atk = e.Stats.Atk
-	opp.Def = e.Stats.Def
-	if opp.Shadow {
-		opp.Atk *= engine.DmgShadowAtk
-		opp.Def *= engine.DmgShadowDef
+	// Opponent types (from the resolved species).
+	if haveMeta {
+		opp.Types = meta.Types
+	}
+
+	// The meta fights at its default-IV stats (the state pvpoke's ranker builds
+	// the published list from), full precision; shadow forms take the atk/def
+	// multipliers. Fall back to the meta file's published stats if the species
+	// isn't in the local game data.
+	opp.Shadow = isShadowID(id)
+	if haveMeta {
+		st := meta.DefaultStats(a.CP, opp.Shadow)
+		opp.Atk, opp.Def, opp.Hp = st.Atk, st.Def, st.Hp
+		ivs, level := meta.DefaultCombo(a.CP)
+		opp.IVs, opp.Level = ivs, level
+	} else {
+		opp.Atk, opp.Def, opp.Hp = e.Stats.Atk, e.Stats.Def, e.Stats.Hp
+		if opp.Shadow {
+			opp.Atk *= engine.DmgShadowAtk
+			opp.Def *= engine.DmgShadowDef
+		}
 	}
 
 	userTypes := a.Poke.Types
 
-	// The user's moves (their pool), each evaluated against this opponent.
+	// BREAK side: the user's moves (their pool), each evaluated against this
+	// opponent across the four IV states.
 	userFast := a.gd.AllMoves(a.Poke.FastMoves)
 	userCharged := a.gd.AllMoves(a.Poke.ChargedMoves)
-
 	addMove := func(m engine.Attack, isFast bool) {
 		m.Stab = engine.Stab(m.Type, userTypes)
 		eff := engine.Effectiveness(m.Type, opp.Types)
 		states := make([]int, 0, len(stateOrder))
 		for _, name := range stateOrder {
 			st := a.states[name]
-			dmg := engine.Damage(st.Bs.Atk, opp.Def, m.Power, m.Stab, eff)
-			states = append(states, dmg)
+			states = append(states, engine.Damage(st.Bs.Atk, opp.Def, m.Power, m.Stab, eff))
 		}
-		md := MoveDamage{
-			Move:   m,
-			Fast:   isFast,
-			States: states,
-			Delta:  states[idx(StateRank1)] - states[idx(StateNow)],
-		}
+		md := MoveDamage{Move: m, Fast: isFast, States: states, Delta: states[idx(StateRank1)] - states[idx(StateNow)]}
 		md.MaxDelta = max(states) - states[idx(StateNow)]
 		opp.Moves = append(opp.Moves, md)
 	}
@@ -221,7 +244,46 @@ func (a *Analyzer) analyzeOpponent(e *TopMetaEntry) *Opponent {
 	for _, m := range userCharged {
 		addMove(m, false)
 	}
+
+	// BULKPOINT side: the meta's primary fast move hitting the user. Its
+	// damage varies only via the user's defense across the four IV states (the
+	// meta itself is fixed at default IVs).
+	if fm := a.metaFastMove(e); fm != nil {
+		stab := engine.Stab(fm.Type, opp.Types)
+		eff := engine.Effectiveness(fm.Type, userTypes)
+		states := make([]int, 0, len(stateOrder))
+		for _, name := range stateOrder {
+			st := a.states[name]
+			states = append(states, engine.Damage(opp.Atk, st.Bs.Def, fm.Power, stab, eff))
+		}
+		md := MoveDamage{Move: *fm, Fast: true, States: states, Delta: states[idx(StateNow)] - states[idx(StateRank1)]}
+		// For the bulk side a *larger* value is worse for the user; MaxDelta is
+		// the increase from your current state to the worst (lowest-def) state.
+		md.MaxDelta = max(states) - states[idx(StateNow)]
+		opp.Bulk = append(opp.Bulk, md)
+	}
 	return opp
+}
+
+// metaFastMove returns the meta's primary (first recorded) fast move as a
+// resolved Attack, for the bulkpoint side. It prefers the move pool recorded
+// in the meta file (the set pvpoke's ranker actually battles with) and falls
+// back to the species' first fast-move pool entry. Returns nil if it cannot
+// resolve one (a missing move id, or no pool at all).
+func (a *Analyzer) metaFastMove(e *TopMetaEntry) *engine.Attack {
+	if len(e.FastMoves) > 0 {
+		if m, ok := a.gd.Move(e.FastMoves[0]); ok {
+			mm := m
+			return &mm
+		}
+	}
+	if poke, ok := a.gd.ByID(e.SpeciesID); ok && len(poke.FastMoves) > 0 {
+		if m, ok := a.gd.Move(poke.FastMoves[0]); ok {
+			mm := m
+			return &mm
+		}
+	}
+	return nil
 }
 
 func idx(name string) int {

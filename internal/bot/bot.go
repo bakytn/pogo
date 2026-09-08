@@ -92,6 +92,9 @@ func (b *Bot) buildCommand(name, description string) *discordgo.ApplicationComma
 			intOpt("def", "Defense IV (0–15)", false, 0, 15),
 			intOpt("hp", "HP IV (0–15)", false, 0, 15),
 			choiceOpt("stat", "Rank by which stat", []string{"overall", "atk", "def", "hp"}, false),
+			boolOpt("shadow", "Shadow form (e.g. /breaker charizard shadow)", false),
+			boolOpt("fast", "Report fast moves only (default: all moves)", false),
+			stringOpt("move", "Specific move to report (e.g. shadow_claw); implies fast", false),
 		},
 	}
 }
@@ -99,6 +102,13 @@ func (b *Bot) buildCommand(name, description string) *discordgo.ApplicationComma
 func stringOpt(name, desc string, required bool) *discordgo.ApplicationCommandOption {
 	return &discordgo.ApplicationCommandOption{
 		Type: discordgo.ApplicationCommandOptionString,
+		Name: name, Description: desc, Required: required,
+	}
+}
+
+func boolOpt(name, desc string, required bool) *discordgo.ApplicationCommandOption {
+	return &discordgo.ApplicationCommandOption{
+		Type: discordgo.ApplicationCommandOptionBoolean,
 		Name: name, Description: desc, Required: required,
 	}
 }
@@ -175,6 +185,15 @@ func (b *Bot) buildRequest(d discordgo.ApplicationCommandInteractionData) servic
 		}
 		return 0, false
 	}
+	getBool := func(key string) (bool, bool) {
+		for _, o := range d.Options {
+			if o.Name == key && o.Type == discordgo.ApplicationCommandOptionBoolean {
+				v, _ := o.Value.(bool)
+				return v, true
+			}
+		}
+		return false, false
+	}
 
 	req.Name = getStr("pokemon")
 	if cp, ok := getInt("cp"); ok {
@@ -198,6 +217,21 @@ func (b *Bot) buildRequest(d discordgo.ApplicationCommandInteractionData) servic
 	}
 	if stat := getStr("stat"); stat != "" {
 		req.SortStat = engine.SortStat(stat)
+	}
+	if shadow, ok := getBool("shadow"); ok && shadow {
+		req.Shadow = true
+	}
+	if req.Extra == nil {
+		req.Extra = map[string]string{}
+	}
+	// fast (bool) and move (string) both drive the breaker's report filters.
+	fast, fastSet := getBool("fast")
+	move := getStr("move")
+	if fastSet && fast || move != "" {
+		req.Extra["fast"] = "1"
+	}
+	if move != "" {
+		req.Extra["move"] = move
 	}
 	return req
 }

@@ -471,6 +471,1840 @@
     "def": 130.6,
     "hp": 150
    }
+  },
+  {
+   "speciesId": "fearow",
+   "speciesName": "Fearow",
+   "score": 90.7,
+   "fastMoves": [
+    "PECK",
+    "STEEL_WING"
+   ],
+   "chargedMoves": [
+    "DRILL_PECK",
+    "DRILL_RUN",
+    "TWISTER",
+    "FLY",
+    "SKY_ATTACK",
+    "AERIAL_ACE"
+   ],
+   "stats": {
+    "product": 1706,
+    "atk": 131.4,
+    "def": 104.6,
+    "hp": 124
+   }
+  },
+  {
+   "speciesId": "feraligatr_shadow",
+   "speciesName": "Feraligatr (Shadow)",
+   "score": 90.6,
+   "fastMoves": [
+    "SHADOW_CLAW",
+    "WATERFALL",
+    "ICE_FANG",
+    "WATER_GUN",
+    "BITE"
+   ],
+   "chargedMoves": [
+    "HYDRO_CANNON",
+    "CRUNCH",
+    "ICE_BEAM",
+    "HYDRO_PUMP",
+    "FRUSTRATION"
+   ],
+   "stats": {
+    "product": 1818,
+    "atk": 123.8,
+    "def": 117.3,
+    "hp": 125
+   }
+  },
+  {
+   "speciesId": "kingdra",
+   "speciesName": "Kingdra",
+   "score": 90.6,
+   "fastMoves": [
+    "DRAGON_BREATH",
+    "WATERFALL",
+    "WATER_GUN"
+   ],
+   "chargedMoves": [
+    "SURF",
+    "SWIFT",
+    "OUTRAGE",
+    "BLIZZARD",
+    "OCTAZOOKA",
+    "HYDRO_PUMP"
+   ],
+   "stats": {
+    "product": 1839,
+    "atk": 121.8,
+    "def": 127.9,
+    "hp": 118
+   }
+  },
+  {
+   "speciesId": "azumarill",
+   "speciesName": "Azumarill",
+   "score": 90.5,
+   "fastMoves": [
+    "BUBBLE",
+    "ROCK_SMASH"
+   ],
+   "chargedMoves": [
+    "PLAY_ROUGH",
+    "ICE_BEAM",
+    "HYDRO_PUMP"
+   ],
+   "stats": {
+    "product": 2400,
+    "atk": 93.4,
+    "def": 134.4,
+    "hp": 191
+   }
+  },
+  {
+   "speciesId": "guzzlord",
+   "speciesName": "Guzzlord",
+   "score": 90.5,
+   "fastMoves": [
+    "DRAGON_TAIL",
+    "SNARL"
+   ],
+   "chargedMoves": [
+    "BRUTAL_SWING",
+    "DRAGON_CLAW",
+    "SLUDGE_BOMB",
+    "CRUNCH"
+   ],
+   "stats": {
+    "product": 1983,
+    "atk": 113.2,
+    "def": 66,
+    "hp": 265
+   }
+  },
+  {
+   "speciesId": "furret",
+   "speciesName": "Furret",
+   "score": 90.3,
+   "fastMoves": [
+    "SUCKER_PUNCH",
+    "QUICK_ATTACK"
+   ],
+   "chargedMoves": [
+    "SWIFT",
+    "TRAILBLAZE",
+    "BRICK_BREAK",
+    "DIG",
+    "HYPER_BEAM"
+   ],
+   "stats": {
+    "product": 1946,
+    "atk": 115.3,
+    "def": 105.4,
+    "hp": 160
+   }
+  },
+  {
+   "speciesId": "kingdra_shadow",
+   "speciesName": "Kingdra (Shadow)",
+   "score": 90.3,
+   "fastMoves": [
+    "DRAGON_BREATH",
+    "WATERFALL",
+    "WATER_GUN"
+   ],
+   "chargedMoves": [
+    "SURF",
+    "SWIFT",
+    "OUTRAGE",
+    "BLIZZARD",
+    "OCTAZOOKA",
+    "HYDRO_PUMP",
+    "FRUSTRATION"
+   ],
+   "stats": {
+    "product": 1839,
+    "atk": 121.8,
+    "def": 127.9,
+    "hp": 118
+   }
+  },
+  {
+   "speciesId": "lapras",
+   "speciesName": "Lapras",
+   "score": 90.3,
+   "fastMoves": [
+    "PSYWAVE",
+    "ICE_SHARD",
+    "WATER_GUN",
+    "FROST_BREATH"
+   ],
+   "chargedMoves": [
+    "SPARKLING_ARIA",
+    "ICE_BEAM",
+    "SURF",
+    "DRAGON_PULSE",
+    "SKULL_BASH",
+    "BLIZZARD",
+    "HYDRO_PUMP"
+   ],
+   "stats": {
+    "product": 2147,
+    "atk": 104.6,
+    "def": 114.5,
+    "hp": 179
+   }
+  },
+  {
+   "speciesId": "corviknight_shadow",
+   "speciesName": "Corviknight (Shadow)",
+   "score": 90.2,
+   "fastMoves": [
+    "SAND_ATTACK",
+    "AIR_SLASH",
+    "STEEL_WING"
+   ],
+   "chargedMoves": [
+    "AIR_CUTTER",
+    "IRON_HEAD",
+    "PAYBACK",
+    "SKY_ATTACK",
+    "FRUSTRATION"
+   ],
+   "stats": {
+    "product": 2097,
+    "atk": 106.9,
+    "def": 130.6,
+    "hp": 150
+   }
+  },
+  {
+   "speciesId": "dragonair_shadow",
+   "speciesName": "Dragonair (Shadow)",
+   "score": 90.2,
+   "fastMoves": [
+    "DRAGON_BREATH",
+    "IRON_TAIL"
+   ],
+   "chargedMoves": [
+    "AQUA_TAIL",
+    "BODY_SLAM",
+    "DRAGON_PULSE",
+    "WRAP",
+    "FRUSTRATION"
+   ],
+   "stats": {
+    "product": 1788,
+    "atk": 125.2,
+    "def": 112.4,
+    "hp": 127
+   }
+  },
+  {
+   "speciesId": "sableye_shadow",
+   "speciesName": "Sableye (Shadow)",
+   "score": 90.2,
+   "fastMoves": [
+    "SHADOW_CLAW",
+    "FEINT_ATTACK"
+   ],
+   "chargedMoves": [
+    "FOUL_PLAY",
+    "POWER_GEM",
+    "SHADOW_SNEAK",
+    "DRAIN_PUNCH",
+    "DAZZLING_GLEAM",
+    "FRUSTRATION"
+   ],
+   "stats": {
+    "product": 1864,
+    "atk": 119.6,
+    "def": 124.6,
+    "hp": 125
+   }
+  },
+  {
+   "speciesId": "seismitoad",
+   "speciesName": "Seismitoad",
+   "score": 90.2,
+   "fastMoves": [
+    "MUD_SHOT",
+    "BUBBLE"
+   ],
+   "chargedMoves": [
+    "EARTH_POWER",
+    "ICY_WIND",
+    "MUDDY_WATER",
+    "SLUDGE_BOMB"
+   ],
+   "stats": {
+    "product": 1869,
+    "atk": 120.3,
+    "def": 100.8,
+    "hp": 154
+   }
+  },
+  {
+   "speciesId": "umbreon",
+   "speciesName": "Umbreon",
+   "score": 90.2,
+   "fastMoves": [
+    "SNARL",
+    "FEINT_ATTACK"
+   ],
+   "chargedMoves": [
+    "FOUL_PLAY",
+    "LAST_RESORT",
+    "DARK_PULSE",
+    "PSYCHIC"
+   ],
+   "stats": {
+    "product": 2492,
+    "atk": 90.2,
+    "def": 177,
+    "hp": 156
+   }
+  },
+  {
+   "speciesId": "medicham",
+   "speciesName": "Medicham",
+   "score": 90.1,
+   "fastMoves": [
+    "PSYCHO_CUT",
+    "COUNTER"
+   ],
+   "chargedMoves": [
+    "DYNAMIC_PUNCH",
+    "ICE_PUNCH",
+    "PSYCHIC",
+    "POWER_UP_PUNCH"
+   ],
+   "stats": {
+    "product": 2103,
+    "atk": 106.9,
+    "def": 139.4,
+    "hp": 141
+   }
+  },
+  {
+   "speciesId": "talonflame",
+   "speciesName": "Talonflame",
+   "score": 90.1,
+   "fastMoves": [
+    "INCINERATE",
+    "PECK",
+    "FIRE_SPIN",
+    "STEEL_WING"
+   ],
+   "chargedMoves": [
+    "BRAVE_BIRD",
+    "FLY",
+    "FLAME_CHARGE",
+    "HURRICANE",
+    "RETURN",
+    "FIRE_BLAST"
+   ],
+   "stats": {
+    "product": 1847,
+    "atk": 121.4,
+    "def": 112.6,
+    "hp": 135
+   }
+  },
+  {
+   "speciesId": "dragonair",
+   "speciesName": "Dragonair",
+   "score": 90,
+   "fastMoves": [
+    "DRAGON_BREATH",
+    "IRON_TAIL"
+   ],
+   "chargedMoves": [
+    "AQUA_TAIL",
+    "BODY_SLAM",
+    "WRAP",
+    "DRAGON_PULSE",
+    "RETURN"
+   ],
+   "stats": {
+    "product": 1788,
+    "atk": 125.2,
+    "def": 112.4,
+    "hp": 127
+   }
+  },
+  {
+   "speciesId": "oinkologne_female",
+   "speciesName": "Oinkologne (Female)",
+   "score": 89.9,
+   "fastMoves": [
+    "MUD_SLAP",
+    "TACKLE",
+    "TAKE_DOWN"
+   ],
+   "chargedMoves": [
+    "BODY_SLAM",
+    "TRAILBLAZE",
+    "DIG"
+   ],
+   "stats": {
+    "product": 2042,
+    "atk": 109.6,
+    "def": 111.5,
+    "hp": 167
+   }
+  },
+  {
+   "speciesId": "sliggoo",
+   "speciesName": "Sliggoo",
+   "score": 89.9,
+   "fastMoves": [
+    "DRAGON_BREATH",
+    "WATER_GUN",
+    "TACKLE"
+   ],
+   "chargedMoves": [
+    "BODY_SLAM",
+    "DRAGON_PULSE",
+    "WATER_PULSE",
+    "MUDDY_WATER",
+    "SLUDGE_WAVE"
+   ],
+   "stats": {
+    "product": 1956,
+    "atk": 114.1,
+    "def": 133.8,
+    "hp": 128
+   }
+  },
+  {
+   "speciesId": "sealeo",
+   "speciesName": "Sealeo",
+   "score": 89.8,
+   "fastMoves": [
+    "POWDER_SNOW",
+    "WATER_GUN"
+   ],
+   "chargedMoves": [
+    "SURF",
+    "BODY_SLAM",
+    "AURORA_BEAM",
+    "WATER_PULSE",
+    "RETURN"
+   ],
+   "stats": {
+    "product": 2065,
+    "atk": 108.9,
+    "def": 112.8,
+    "hp": 168
+   }
+  },
+  {
+   "speciesId": "greedent",
+   "speciesName": "Greedent",
+   "score": 89.7,
+   "fastMoves": [
+    "MUD_SHOT",
+    "BULLET_SEED",
+    "TACKLE",
+    "BITE"
+   ],
+   "chargedMoves": [
+    "BODY_SLAM",
+    "TRAILBLAZE",
+    "CRUNCH"
+   ],
+   "stats": {
+    "product": 2094,
+    "atk": 106.8,
+    "def": 110.7,
+    "hp": 177
+   }
+  },
+  {
+   "speciesId": "grumpig",
+   "speciesName": "Grumpig",
+   "score": 89.7,
+   "fastMoves": [
+    "PSYWAVE",
+    "EXTRASENSORY",
+    "CHARGE_BEAM"
+   ],
+   "chargedMoves": [
+    "DYNAMIC_PUNCH",
+    "SHADOW_BALL",
+    "PSYCHIC",
+    "RETURN",
+    "MIRROR_COAT"
+   ],
+   "stats": {
+    "product": 1967,
+    "atk": 113.3,
+    "def": 131.4,
+    "hp": 132
+   }
+  },
+  {
+   "speciesId": "sealeo_shadow",
+   "speciesName": "Sealeo (Shadow)",
+   "score": 89.7,
+   "fastMoves": [
+    "POWDER_SNOW",
+    "WATER_GUN"
+   ],
+   "chargedMoves": [
+    "SURF",
+    "BODY_SLAM",
+    "AURORA_BEAM",
+    "WATER_PULSE",
+    "FRUSTRATION"
+   ],
+   "stats": {
+    "product": 2065,
+    "atk": 108.9,
+    "def": 112.8,
+    "hp": 168
+   }
+  },
+  {
+   "speciesId": "thievul",
+   "speciesName": "Thievul",
+   "score": 89.7,
+   "fastMoves": [
+    "SUCKER_PUNCH",
+    "SNARL",
+    "QUICK_ATTACK"
+   ],
+   "chargedMoves": [
+    "NIGHT_SLASH",
+    "ICY_WIND",
+    "PLAY_ROUGH"
+   ],
+   "stats": {
+    "product": 1856,
+    "atk": 119.8,
+    "def": 121.9,
+    "hp": 127
+   }
+  },
+  {
+   "speciesId": "diggersby",
+   "speciesName": "Diggersby",
+   "score": 89.6,
+   "fastMoves": [
+    "MUD_SHOT",
+    "QUICK_ATTACK"
+   ],
+   "chargedMoves": [
+    "SCORCHING_SANDS",
+    "FIRE_PUNCH",
+    "RETURN",
+    "EARTHQUAKE",
+    "DIG",
+    "HYPER_BEAM"
+   ],
+   "stats": {
+    "product": 2337,
+    "atk": 95.7,
+    "def": 140.3,
+    "hp": 174
+   }
+  },
+  {
+   "speciesId": "dusclops",
+   "speciesName": "Dusclops",
+   "score": 89.6,
+   "fastMoves": [
+    "HEX",
+    "FEINT_ATTACK"
+   ],
+   "chargedMoves": [
+    "SHADOW_PUNCH",
+    "ICE_PUNCH",
+    "FIRE_PUNCH",
+    "RETURN",
+    "POLTERGEIST"
+   ],
+   "stats": {
+    "product": 2187,
+    "atk": 102.4,
+    "def": 197.6,
+    "hp": 108
+   }
+  },
+  {
+   "speciesId": "lapras_shadow",
+   "speciesName": "Lapras (Shadow)",
+   "score": 89.5,
+   "fastMoves": [
+    "PSYWAVE",
+    "ICE_SHARD",
+    "WATER_GUN",
+    "FROST_BREATH"
+   ],
+   "chargedMoves": [
+    "SPARKLING_ARIA",
+    "ICE_BEAM",
+    "SURF",
+    "DRAGON_PULSE",
+    "SKULL_BASH",
+    "BLIZZARD",
+    "HYDRO_PUMP",
+    "FRUSTRATION"
+   ],
+   "stats": {
+    "product": 2147,
+    "atk": 104.6,
+    "def": 114.5,
+    "hp": 179
+   }
+  },
+  {
+   "speciesId": "sableye",
+   "speciesName": "Sableye",
+   "score": 89.5,
+   "fastMoves": [
+    "SHADOW_CLAW",
+    "FEINT_ATTACK"
+   ],
+   "chargedMoves": [
+    "FOUL_PLAY",
+    "POWER_GEM",
+    "SHADOW_SNEAK",
+    "DRAIN_PUNCH",
+    "DAZZLING_GLEAM",
+    "RETURN"
+   ],
+   "stats": {
+    "product": 1864,
+    "atk": 119.6,
+    "def": 124.6,
+    "hp": 125
+   }
+  },
+  {
+   "speciesId": "wigglytuff",
+   "speciesName": "Wigglytuff",
+   "score": 89.5,
+   "fastMoves": [
+    "CHARM",
+    "FEINT_ATTACK",
+    "POUND"
+   ],
+   "chargedMoves": [
+    "SWIFT",
+    "DISARMING_VOICE",
+    "ICY_WIND",
+    "DAZZLING_GLEAM",
+    "ICE_BEAM",
+    "PLAY_ROUGH",
+    "HYPER_BEAM"
+   ],
+   "stats": {
+    "product": 1939,
+    "atk": 115.1,
+    "def": 75.5,
+    "hp": 223
+   }
+  },
+  {
+   "speciesId": "cradily",
+   "speciesName": "Cradily",
+   "score": 89.4,
+   "fastMoves": [
+    "ACID",
+    "BULLET_SEED",
+    "INFESTATION"
+   ],
+   "chargedMoves": [
+    "ROCK_TOMB",
+    "ROCK_SLIDE",
+    "GRASS_KNOT",
+    "BULLDOZE",
+    "STONE_EDGE",
+    "RETURN"
+   ],
+   "stats": {
+    "product": 2126,
+    "atk": 105.2,
+    "def": 140.3,
+    "hp": 144
+   }
+  },
+  {
+   "speciesId": "dusclops_shadow",
+   "speciesName": "Dusclops (Shadow)",
+   "score": 89.4,
+   "fastMoves": [
+    "HEX",
+    "FEINT_ATTACK"
+   ],
+   "chargedMoves": [
+    "SHADOW_PUNCH",
+    "ICE_PUNCH",
+    "FIRE_PUNCH",
+    "POLTERGEIST",
+    "FRUSTRATION"
+   ],
+   "stats": {
+    "product": 2187,
+    "atk": 102.4,
+    "def": 197.6,
+    "hp": 108
+   }
+  },
+  {
+   "speciesId": "florges",
+   "speciesName": "Florges",
+   "score": 89.4,
+   "fastMoves": [
+    "FAIRY_WIND",
+    "VINE_WHIP",
+    "TACKLE",
+    "RAZOR_LEAF"
+   ],
+   "chargedMoves": [
+    "DISARMING_VOICE",
+    "CHILLING_WATER",
+    "TRAILBLAZE",
+    "MOONBLAST",
+    "PSYCHIC",
+    "PETAL_BLIZZARD"
+   ],
+   "stats": {
+    "product": 1870,
+    "atk": 120,
+    "def": 141.5,
+    "hp": 110
+   }
+  },
+  {
+   "speciesId": "moltres_galarian",
+   "speciesName": "Moltres (Galarian)",
+   "score": 89.4,
+   "fastMoves": [
+    "SUCKER_PUNCH",
+    "WING_ATTACK"
+   ],
+   "chargedMoves": [
+    "BRAVE_BIRD",
+    "FLY",
+    "PAYBACK",
+    "ANCIENT_POWER"
+   ],
+   "stats": {
+    "product": 1922,
+    "atk": 115.1,
+    "def": 134.6,
+    "hp": 124
+   }
+  },
+  {
+   "speciesId": "blastoise",
+   "speciesName": "Blastoise",
+   "score": 89.3,
+   "fastMoves": [
+    "ROLLOUT",
+    "WATER_GUN",
+    "BITE"
+   ],
+   "chargedMoves": [
+    "HYDRO_CANNON",
+    "ICE_BEAM",
+    "SKULL_BASH",
+    "FLASH_CANNON",
+    "HYDRO_PUMP"
+   ],
+   "stats": {
+    "product": 2008,
+    "atk": 112.1,
+    "def": 137.7,
+    "hp": 130
+   }
+  },
+  {
+   "speciesId": "clefable",
+   "speciesName": "Clefable",
+   "score": 89.3,
+   "fastMoves": [
+    "FAIRY_WIND",
+    "CHARM",
+    "CHARGE_BEAM",
+    "ZEN_HEADBUTT",
+    "POUND"
+   ],
+   "chargedMoves": [
+    "METEOR_MASH",
+    "SWIFT",
+    "MOONBLAST",
+    "DAZZLING_GLEAM",
+    "PSYCHIC",
+    "DRAINING_KISS"
+   ],
+   "stats": {
+    "product": 1922,
+    "atk": 116.5,
+    "def": 112.1,
+    "hp": 147
+   }
+  },
+  {
+   "speciesId": "mantine",
+   "speciesName": "Mantine",
+   "score": 89.3,
+   "fastMoves": [
+    "WING_ATTACK",
+    "BUBBLE",
+    "BULLET_SEED"
+   ],
+   "chargedMoves": [
+    "TWISTER",
+    "WATER_PULSE",
+    "AERIAL_ACE",
+    "ICE_BEAM",
+    "BUBBLE_BEAM"
+   ],
+   "stats": {
+    "product": 2127,
+    "atk": 105.5,
+    "def": 166.5,
+    "hp": 121
+   }
+  },
+  {
+   "speciesId": "talonflame_shadow",
+   "speciesName": "Talonflame (Shadow)",
+   "score": 89.3,
+   "fastMoves": [
+    "INCINERATE",
+    "PECK",
+    "FIRE_SPIN",
+    "STEEL_WING"
+   ],
+   "chargedMoves": [
+    "BRAVE_BIRD",
+    "FLY",
+    "FLAME_CHARGE",
+    "FIRE_BLAST",
+    "HURRICANE",
+    "FRUSTRATION"
+   ],
+   "stats": {
+    "product": 1847,
+    "atk": 121.4,
+    "def": 112.6,
+    "hp": 135
+   }
+  },
+  {
+   "speciesId": "mandibuzz",
+   "speciesName": "Mandibuzz",
+   "score": 89.2,
+   "fastMoves": [
+    "SNARL",
+    "AIR_SLASH"
+   ],
+   "chargedMoves": [
+    "FOUL_PLAY",
+    "SHADOW_BALL",
+    "AERIAL_ACE",
+    "DARK_PULSE"
+   ],
+   "stats": {
+    "product": 2440,
+    "atk": 92.1,
+    "def": 151.2,
+    "hp": 175
+   }
+  },
+  {
+   "speciesId": "dewgong",
+   "speciesName": "Dewgong",
+   "score": 89.1,
+   "fastMoves": [
+    "ICE_SHARD",
+    "FROST_BREATH",
+    "IRON_TAIL"
+   ],
+   "chargedMoves": [
+    "AQUA_JET",
+    "DRILL_RUN",
+    "ICY_WIND",
+    "BLIZZARD",
+    "LIQUIDATION",
+    "WATER_PULSE",
+    "RETURN",
+    "AURORA_BEAM"
+   ],
+   "stats": {
+    "product": 2192,
+    "atk": 101.9,
+    "def": 136.9,
+    "hp": 157
+   }
+  },
+  {
+   "speciesId": "malamar",
+   "speciesName": "Malamar",
+   "score": 89.1,
+   "fastMoves": [
+    "PSYWAVE",
+    "PSYCHO_CUT",
+    "PECK"
+   ],
+   "chargedMoves": [
+    "FOUL_PLAY",
+    "SUPER_POWER",
+    "PSYBEAM",
+    "RETURN",
+    "HYPER_BEAM"
+   ],
+   "stats": {
+    "product": 1899,
+    "atk": 117.2,
+    "def": 116.5,
+    "hp": 139
+   }
+  },
+  {
+   "speciesId": "steelix_shadow",
+   "speciesName": "Steelix (Shadow)",
+   "score": 89.1,
+   "fastMoves": [
+    "DRAGON_TAIL",
+    "THUNDER_FANG",
+    "IRON_TAIL"
+   ],
+   "chargedMoves": [
+    "PSYCHIC_FANGS",
+    "EARTHQUAKE",
+    "CRUNCH",
+    "HEAVY_SLAM",
+    "BREAKING_SWIPE",
+    "FRUSTRATION"
+   ],
+   "stats": {
+    "product": 2273,
+    "atk": 98.4,
+    "def": 183.2,
+    "hp": 126
+   }
+  },
+  {
+   "speciesId": "charjabug",
+   "speciesName": "Charjabug",
+   "score": 89,
+   "fastMoves": [
+    "VOLT_SWITCH",
+    "BUG_BITE",
+    "SPARK"
+   ],
+   "chargedMoves": [
+    "X_SCISSOR",
+    "DISCHARGE",
+    "CRUNCH",
+    "RETURN"
+   ],
+   "stats": {
+    "product": 1949,
+    "atk": 114.7,
+    "def": 134.8,
+    "hp": 126
+   }
+  },
+  {
+   "speciesId": "drapion_shadow",
+   "speciesName": "Drapion (Shadow)",
+   "score": 89,
+   "fastMoves": [
+    "POISON_STING",
+    "ICE_FANG",
+    "INFESTATION",
+    "BITE"
+   ],
+   "chargedMoves": [
+    "AQUA_TAIL",
+    "CRUNCH",
+    "SLUDGE_BOMB",
+    "FELL_STINGER",
+    "FRUSTRATION"
+   ],
+   "stats": {
+    "product": 1903,
+    "atk": 117.8,
+    "def": 136.8,
+    "hp": 118
+   }
+  },
+  {
+   "speciesId": "gastrodon",
+   "speciesName": "Gastrodon",
+   "score": 89,
+   "fastMoves": [
+    "MUD_SLAP",
+    "HIDDEN_POWER_GROUND",
+    "HIDDEN_POWER_WATER",
+    "HIDDEN_POWER_ICE",
+    "HIDDEN_POWER_ROCK",
+    "HIDDEN_POWER_ELECTRIC",
+    "HIDDEN_POWER_FLYING",
+    "HIDDEN_POWER_FIRE",
+    "HIDDEN_POWER_FIGHTING",
+    "HIDDEN_POWER_GRASS",
+    "HIDDEN_POWER_GHOST",
+    "HIDDEN_POWER_DARK",
+    "HIDDEN_POWER_PSYCHIC",
+    "HIDDEN_POWER_STEEL",
+    "HIDDEN_POWER_DRAGON",
+    "HIDDEN_POWER_BUG",
+    "HIDDEN_POWER_POISON"
+   ],
+   "chargedMoves": [
+    "EARTH_POWER",
+    "BODY_SLAM",
+    "WATER_PULSE",
+    "EARTHQUAKE"
+   ],
+   "stats": {
+    "product": 1967,
+    "atk": 113.2,
+    "def": 103.4,
+    "hp": 168
+   }
+  },
+  {
+   "speciesId": "ninetales_alolan",
+   "speciesName": "Ninetales (Alolan)",
+   "score": 89,
+   "fastMoves": [
+    "POWDER_SNOW",
+    "CHARM",
+    "FEINT_ATTACK"
+   ],
+   "chargedMoves": [
+    "WEATHER_BALL_ICE",
+    "PSYSHOCK",
+    "CHILLING_WATER",
+    "DAZZLING_GLEAM",
+    "ICE_BEAM",
+    "RETURN",
+    "BLIZZARD"
+   ],
+   "stats": {
+    "product": 1949,
+    "atk": 114.5,
+    "def": 136.1,
+    "hp": 125
+   }
+  },
+  {
+   "speciesId": "ninetales_alolan_shadow",
+   "speciesName": "Ninetales (Alolan) (Shadow)",
+   "score": 88.8,
+   "fastMoves": [
+    "POWDER_SNOW",
+    "CHARM",
+    "FEINT_ATTACK"
+   ],
+   "chargedMoves": [
+    "WEATHER_BALL_ICE",
+    "PSYSHOCK",
+    "CHILLING_WATER",
+    "DAZZLING_GLEAM",
+    "ICE_BEAM",
+    "BLIZZARD",
+    "FRUSTRATION"
+   ],
+   "stats": {
+    "product": 1949,
+    "atk": 114.5,
+    "def": 136.1,
+    "hp": 125
+   }
+  },
+  {
+   "speciesId": "swampert",
+   "speciesName": "Swampert",
+   "score": 88.8,
+   "fastMoves": [
+    "MUD_SHOT",
+    "WATER_GUN"
+   ],
+   "chargedMoves": [
+    "HYDRO_CANNON",
+    "SLUDGE",
+    "EARTHQUAKE",
+    "MUDDY_WATER",
+    "SURF",
+    "SLUDGE_WAVE"
+   ],
+   "stats": {
+    "product": 1826,
+    "atk": 122.9,
+    "def": 109.1,
+    "hp": 136
+   }
+  },
+  {
+   "speciesId": "aegislash_shield",
+   "speciesName": "Aegislash (Blade)",
+   "score": 88.7,
+   "fastMoves": [
+    "AEGISLASH_CHARGE_PSYCHO_CUT",
+    "AEGISLASH_CHARGE_AIR_SLASH"
+   ],
+   "chargedMoves": [
+    "SHADOW_BALL",
+    "GYRO_BALL",
+    "FLASH_CANNON"
+   ],
+   "stats": {
+    "product": 2702,
+    "atk": 82.8,
+    "def": 234.6,
+    "hp": 139
+   }
+  },
+  {
+   "speciesId": "bastiodon",
+   "speciesName": "Bastiodon",
+   "score": 88.7,
+   "fastMoves": [
+    "SMACK_DOWN",
+    "IRON_TAIL"
+   ],
+   "chargedMoves": [
+    "STONE_EDGE",
+    "FLAMETHROWER",
+    "FLASH_CANNON",
+    "RETURN"
+   ],
+   "stats": {
+    "product": 2776,
+    "atk": 80.6,
+    "def": 247.6,
+    "hp": 139
+   }
+  },
+  {
+   "speciesId": "marowak_shadow",
+   "speciesName": "Marowak (Shadow)",
+   "score": 88.7,
+   "fastMoves": [
+    "MUD_SLAP",
+    "ROCK_SMASH"
+   ],
+   "chargedMoves": [
+    "BONE_CLUB",
+    "ROCK_SLIDE",
+    "EARTHQUAKE",
+    "DIG",
+    "FRUSTRATION"
+   ],
+   "stats": {
+    "product": 2041,
+    "atk": 109.6,
+    "def": 148.8,
+    "hp": 125
+   }
+  },
+  {
+   "speciesId": "swampert_shadow",
+   "speciesName": "Swampert (Shadow)",
+   "score": 88.7,
+   "fastMoves": [
+    "MUD_SHOT",
+    "WATER_GUN"
+   ],
+   "chargedMoves": [
+    "HYDRO_CANNON",
+    "SLUDGE",
+    "EARTHQUAKE",
+    "MUDDY_WATER",
+    "SURF",
+    "SLUDGE_WAVE",
+    "FRUSTRATION"
+   ],
+   "stats": {
+    "product": 1826,
+    "atk": 122.9,
+    "def": 109.1,
+    "hp": 136
+   }
+  },
+  {
+   "speciesId": "stunfisk_galarian",
+   "speciesName": "Stunfisk (Galarian)",
+   "score": 88.5,
+   "fastMoves": [
+    "MUD_SHOT",
+    "METAL_CLAW"
+   ],
+   "chargedMoves": [
+    "ROCK_SLIDE",
+    "EARTHQUAKE",
+    "MUDDY_WATER",
+    "FLASH_CANNON"
+   ],
+   "stats": {
+    "product": 2212,
+    "atk": 101.4,
+    "def": 126.6,
+    "hp": 172
+   }
+  },
+  {
+   "speciesId": "stunfisk",
+   "speciesName": "Stunfisk",
+   "score": 88.4,
+   "fastMoves": [
+    "THUNDER_SHOCK",
+    "MUD_SHOT"
+   ],
+   "chargedMoves": [
+    "DISCHARGE",
+    "MUD_BOMB",
+    "MUDDY_WATER"
+   ],
+   "stats": {
+    "product": 2212,
+    "atk": 101.4,
+    "def": 126.6,
+    "hp": 172
+   }
+  },
+  {
+   "speciesId": "hydreigon_shadow",
+   "speciesName": "Hydreigon (Shadow)",
+   "score": 88.3,
+   "fastMoves": [
+    "DRAGON_BREATH",
+    "BITE"
+   ],
+   "chargedMoves": [
+    "BRUTAL_SWING",
+    "FLY",
+    "DRAGON_PULSE",
+    "DARK_PULSE",
+    "FLASH_CANNON",
+    "FRUSTRATION"
+   ],
+   "stats": {
+    "product": 1650,
+    "atk": 136,
+    "def": 104.5,
+    "hp": 116
+   }
+  },
+  {
+   "speciesId": "registeel",
+   "speciesName": "Registeel",
+   "score": 88.3,
+   "fastMoves": [
+    "LOCK_ON",
+    "METAL_CLAW",
+    "ROCK_SMASH"
+   ],
+   "chargedMoves": [
+    "FLASH_CANNON",
+    "FOCUS_BLAST",
+    "ZAP_CANNON",
+    "RETURN",
+    "HYPER_BEAM"
+   ],
+   "stats": {
+    "product": 2346,
+    "atk": 95.6,
+    "def": 190,
+    "hp": 129
+   }
+  },
+  {
+   "speciesId": "dusknoir_shadow",
+   "speciesName": "Dusknoir (Shadow)",
+   "score": 88.2,
+   "fastMoves": [
+    "HEX",
+    "ASTONISH"
+   ],
+   "chargedMoves": [
+    "SHADOW_PUNCH",
+    "DYNAMIC_PUNCH",
+    "SHADOW_BALL",
+    "DARK_PULSE",
+    "PSYCHIC",
+    "POLTERGEIST",
+    "OMINOUS_WIND",
+    "FRUSTRATION"
+   ],
+   "stats": {
+    "product": 1878,
+    "atk": 119.8,
+    "def": 174.1,
+    "hp": 90
+   }
+  },
+  {
+   "speciesId": "malamar_shadow",
+   "speciesName": "Malamar (Shadow)",
+   "score": 88.2,
+   "fastMoves": [
+    "PSYWAVE",
+    "PSYCHO_CUT",
+    "PECK"
+   ],
+   "chargedMoves": [
+    "FOUL_PLAY",
+    "SUPER_POWER",
+    "PSYBEAM",
+    "HYPER_BEAM",
+    "FRUSTRATION"
+   ],
+   "stats": {
+    "product": 1899,
+    "atk": 117.2,
+    "def": 116.5,
+    "hp": 139
+   }
+  },
+  {
+   "speciesId": "dunsparce",
+   "speciesName": "Dunsparce",
+   "score": 88.1,
+   "fastMoves": [
+    "ROLLOUT",
+    "ASTONISH",
+    "BITE"
+   ],
+   "chargedMoves": [
+    "DRILL_RUN",
+    "ROCK_SLIDE",
+    "DIG"
+   ],
+   "stats": {
+    "product": 2139,
+    "atk": 104.7,
+    "def": 110.9,
+    "hp": 184
+   }
+  },
+  {
+   "speciesId": "jumpluff_shadow",
+   "speciesName": "Jumpluff (Shadow)",
+   "score": 88,
+   "fastMoves": [
+    "FAIRY_WIND",
+    "BULLET_SEED",
+    "INFESTATION"
+   ],
+   "chargedMoves": [
+    "ENERGY_BALL",
+    "ACROBATICS",
+    "AERIAL_ACE",
+    "DAZZLING_GLEAM",
+    "SOLAR_BEAM",
+    "FRUSTRATION"
+   ],
+   "stats": {
+    "product": 2323,
+    "atk": 96.7,
+    "def": 156.9,
+    "hp": 153
+   }
+  },
+  {
+   "speciesId": "melmetal",
+   "speciesName": "Melmetal",
+   "score": 88,
+   "fastMoves": [
+    "THUNDER_SHOCK"
+   ],
+   "chargedMoves": [
+    "DOUBLE_IRON_BASH",
+    "DYNAMIC_PUNCH",
+    "SUPER_POWER",
+    "ROCK_SLIDE",
+    "THUNDERBOLT",
+    "HYPER_BEAM",
+    "FLASH_CANNON"
+   ],
+   "stats": {
+    "product": 1858,
+    "atk": 120.9,
+    "def": 105.1,
+    "hp": 146
+   }
+  },
+  {
+   "speciesId": "morpeko_full_belly",
+   "speciesName": "Morpeko (Hangry)",
+   "score": 88,
+   "fastMoves": [
+    "THUNDER_SHOCK",
+    "CHARGE_BEAM",
+    "BITE"
+   ],
+   "chargedMoves": [
+    "AURA_WHEEL_ELECTRIC",
+    "PSYCHIC_FANGS",
+    "SEED_BOMB",
+    "OUTRAGE"
+   ],
+   "stats": {
+    "product": 1596,
+    "atk": 140.4,
+    "def": 96.2,
+    "hp": 118
+   }
+  },
+  {
+   "speciesId": "pelipper",
+   "speciesName": "Pelipper",
+   "score": 88,
+   "fastMoves": [
+    "WING_ATTACK",
+    "WATER_GUN"
+   ],
+   "chargedMoves": [
+    "WEATHER_BALL_WATER",
+    "HURRICANE",
+    "BLIZZARD",
+    "HYDRO_PUMP"
+   ],
+   "stats": {
+    "product": 1825,
+    "atk": 123.2,
+    "def": 128.7,
+    "hp": 115
+   }
+  },
+  {
+   "speciesId": "turtonator",
+   "speciesName": "Turtonator",
+   "score": 88,
+   "fastMoves": [
+    "INCINERATE",
+    "EMBER",
+    "FIRE_SPIN"
+   ],
+   "chargedMoves": [
+    "BRUTAL_SWING",
+    "DRAGON_CLAW",
+    "FLAMETHROWER",
+    "OVERHEAT",
+    "FLASH_CANNON",
+    "DRAGON_PULSE"
+   ],
+   "stats": {
+    "product": 1971,
+    "atk": 113.5,
+    "def": 153.6,
+    "hp": 113
+   }
+  },
+  {
+   "speciesId": "oranguru",
+   "speciesName": "Oranguru",
+   "score": 87.9,
+   "fastMoves": [
+    "CONFUSION",
+    "ZEN_HEADBUTT",
+    "YAWN"
+   ],
+   "chargedMoves": [
+    "BRUTAL_SWING",
+    "TRAILBLAZE",
+    "FUTURE_SIGHT",
+    "PSYCHIC",
+    "FOUL_PLAY"
+   ],
+   "stats": {
+    "product": 2035,
+    "atk": 110.1,
+    "def": 130,
+    "hp": 142
+   }
+  },
+  {
+   "speciesId": "seaking",
+   "speciesName": "Seaking",
+   "score": 87.9,
+   "fastMoves": [
+    "PECK",
+    "WATERFALL",
+    "POISON_JAB"
+   ],
+   "chargedMoves": [
+    "DRILL_RUN",
+    "ICY_WIND",
+    "WATER_PULSE",
+    "MEGAHORN",
+    "ICE_BEAM"
+   ],
+   "stats": {
+    "product": 1834,
+    "atk": 121.9,
+    "def": 108.9,
+    "hp": 138
+   }
+  },
+  {
+   "speciesId": "dondozo",
+   "speciesName": "Dondozo",
+   "score": 87.8,
+   "fastMoves": [
+    "WATERFALL",
+    "WATER_GUN"
+   ],
+   "chargedMoves": [
+    "LIQUIDATION",
+    "SURF",
+    "OUTRAGE",
+    "HYDRO_PUMP"
+   ],
+   "stats": {
+    "product": 2146,
+    "atk": 104.5,
+    "def": 109.7,
+    "hp": 187
+   }
+  },
+  {
+   "speciesId": "gourgeist_large",
+   "speciesName": "Gourgeist (Large)",
+   "score": 87.8,
+   "fastMoves": [
+    "INCINERATE",
+    "HEX",
+    "RAZOR_LEAF"
+   ],
+   "chargedMoves": [
+    "SHADOW_BALL",
+    "SEED_BOMB",
+    "FOUL_PLAY",
+    "FIRE_BLAST",
+    "POLTERGEIST"
+   ],
+   "stats": {
+    "product": 1940,
+    "atk": 115.9,
+    "def": 137.2,
+    "hp": 122
+   }
+  },
+  {
+   "speciesId": "gourgeist_super",
+   "speciesName": "Gourgeist (Super)",
+   "score": 87.8,
+   "fastMoves": [
+    "INCINERATE",
+    "HEX",
+    "RAZOR_LEAF"
+   ],
+   "chargedMoves": [
+    "SHADOW_BALL",
+    "SEED_BOMB",
+    "FOUL_PLAY",
+    "FIRE_BLAST",
+    "POLTERGEIST"
+   ],
+   "stats": {
+    "product": 1954,
+    "atk": 115,
+    "def": 131.6,
+    "hp": 129
+   }
+  },
+  {
+   "speciesId": "milotic",
+   "speciesName": "Milotic",
+   "score": 87.8,
+   "fastMoves": [
+    "WATERFALL",
+    "DRAGON_TAIL"
+   ],
+   "chargedMoves": [
+    "AQUA_TAIL",
+    "WRAP",
+    "SURF",
+    "BLIZZARD",
+    "HYPER_BEAM"
+   ],
+   "stats": {
+    "product": 1985,
+    "atk": 113.1,
+    "def": 133.8,
+    "hp": 131
+   }
+  },
+  {
+   "speciesId": "shelgon",
+   "speciesName": "Shelgon",
+   "score": 87.8,
+   "fastMoves": [
+    "DRAGON_BREATH",
+    "EMBER"
+   ],
+   "chargedMoves": [
+    "TWISTER",
+    "CRUNCH",
+    "FLAMETHROWER",
+    "RETURN",
+    "DRAGON_PULSE"
+   ],
+   "stats": {
+    "product": 1806,
+    "atk": 123.2,
+    "def": 119,
+    "hp": 123
+   }
+  },
+  {
+   "speciesId": "gourgeist_average",
+   "speciesName": "Gourgeist (Average)",
+   "score": 87.7,
+   "fastMoves": [
+    "INCINERATE",
+    "HEX",
+    "RAZOR_LEAF"
+   ],
+   "chargedMoves": [
+    "SHADOW_BALL",
+    "SEED_BOMB",
+    "FOUL_PLAY",
+    "FIRE_BLAST",
+    "POLTERGEIST"
+   ],
+   "stats": {
+    "product": 1934,
+    "atk": 115.9,
+    "def": 145,
+    "hp": 115
+   }
+  },
+  {
+   "speciesId": "hydreigon",
+   "speciesName": "Hydreigon",
+   "score": 87.7,
+   "fastMoves": [
+    "DRAGON_BREATH",
+    "BITE"
+   ],
+   "chargedMoves": [
+    "BRUTAL_SWING",
+    "FLY",
+    "DRAGON_PULSE",
+    "DARK_PULSE",
+    "FLASH_CANNON"
+   ],
+   "stats": {
+    "product": 1650,
+    "atk": 136,
+    "def": 104.5,
+    "hp": 116
+   }
+  },
+  {
+   "speciesId": "drapion",
+   "speciesName": "Drapion",
+   "score": 87.6,
+   "fastMoves": [
+    "POISON_STING",
+    "ICE_FANG",
+    "INFESTATION",
+    "BITE"
+   ],
+   "chargedMoves": [
+    "AQUA_TAIL",
+    "CRUNCH",
+    "SLUDGE_BOMB",
+    "RETURN",
+    "FELL_STINGER"
+   ],
+   "stats": {
+    "product": 1903,
+    "atk": 117.8,
+    "def": 136.8,
+    "hp": 118
+   }
+  },
+  {
+   "speciesId": "shelgon_shadow",
+   "speciesName": "Shelgon (Shadow)",
+   "score": 87.6,
+   "fastMoves": [
+    "DRAGON_BREATH",
+    "EMBER"
+   ],
+   "chargedMoves": [
+    "TWISTER",
+    "CRUNCH",
+    "FLAMETHROWER",
+    "DRAGON_PULSE",
+    "FRUSTRATION"
+   ],
+   "stats": {
+    "product": 1806,
+    "atk": 123.2,
+    "def": 119,
+    "hp": 123
+   }
+  },
+  {
+   "speciesId": "doublade",
+   "speciesName": "Doublade",
+   "score": 87.5,
+   "fastMoves": [
+    "SHADOW_CLAW",
+    "PSYCHO_CUT",
+    "TACKLE"
+   ],
+   "chargedMoves": [
+    "SACRED_SWORD",
+    "GYRO_BALL",
+    "IRON_HEAD"
+   ],
+   "stats": {
+    "product": 1825,
+    "atk": 122.9,
+    "def": 140,
+    "hp": 106
+   }
+  },
+  {
+   "speciesId": "morgrem",
+   "speciesName": "Morgrem",
+   "score": 87.5,
+   "fastMoves": [
+    "SUCKER_PUNCH",
+    "BITE"
+   ],
+   "chargedMoves": [
+    "FOUL_PLAY",
+    "PLAY_ROUGH",
+    "DARK_PULSE"
+   ],
+   "stats": {
+    "product": 1799,
+    "atk": 124.8,
+    "def": 98,
+    "hp": 147
+   }
+  },
+  {
+   "speciesId": "samurott",
+   "speciesName": "Samurott",
+   "score": 87.5,
+   "fastMoves": [
+    "FURY_CUTTER",
+    "WATERFALL"
+   ],
+   "chargedMoves": [
+    "HYDRO_CANNON",
+    "RAZOR_SHELL",
+    "MEGAHORN",
+    "LIQUIDATION",
+    "BLIZZARD",
+    "HYDRO_PUMP"
+   ],
+   "stats": {
+    "product": 1756,
+    "atk": 128,
+    "def": 100.8,
+    "hp": 136
+   }
+  },
+  {
+   "speciesId": "crustle",
+   "speciesName": "Crustle",
+   "score": 87.4,
+   "fastMoves": [
+    "FURY_CUTTER",
+    "SMACK_DOWN"
+   ],
+   "chargedMoves": [
+    "ROCK_WRECKER",
+    "X_SCISSOR",
+    "ROCK_SLIDE",
+    "ROCK_BLAST"
+   ],
+   "stats": {
+    "product": 1864,
+    "atk": 120.3,
+    "def": 134.7,
+    "hp": 115
+   }
+  },
+  {
+   "speciesId": "dusknoir",
+   "speciesName": "Dusknoir",
+   "score": 87.4,
+   "fastMoves": [
+    "HEX",
+    "ASTONISH"
+   ],
+   "chargedMoves": [
+    "SHADOW_PUNCH",
+    "DYNAMIC_PUNCH",
+    "SHADOW_BALL",
+    "DARK_PULSE",
+    "PSYCHIC",
+    "RETURN",
+    "POLTERGEIST",
+    "OMINOUS_WIND"
+   ],
+   "stats": {
+    "product": 1878,
+    "atk": 119.8,
+    "def": 174.1,
+    "hp": 90
+   }
+  },
+  {
+   "speciesId": "gourgeist_small",
+   "speciesName": "Gourgeist (Small)",
+   "score": 87.4,
+   "fastMoves": [
+    "INCINERATE",
+    "HEX",
+    "RAZOR_LEAF"
+   ],
+   "chargedMoves": [
+    "SHADOW_BALL",
+    "SEED_BOMB",
+    "FOUL_PLAY",
+    "FIRE_BLAST",
+    "POLTERGEIST"
+   ],
+   "stats": {
+    "product": 1913,
+    "atk": 116.8,
+    "def": 152.9,
+    "hp": 107
+   }
+  },
+  {
+   "speciesId": "castform_sunny",
+   "speciesName": "Castform (Sunny)",
+   "score": 87.3,
+   "fastMoves": [
+    "EMBER",
+    "TACKLE"
+   ],
+   "chargedMoves": [
+    "WEATHER_BALL_FIRE",
+    "SOLAR_BEAM",
+    "FIRE_BLAST"
+   ],
+   "stats": {
+    "product": 1994,
+    "atk": 112.6,
+    "def": 121.2,
+    "hp": 146
+   }
   }
  ]
 }

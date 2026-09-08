@@ -144,13 +144,20 @@ func (c *breakerCommand) Run(ctx context.Context, svc *service.Service, req serv
 		ivs = &engine.IVs{Atk: 15, Def: 15, Hp: 15}
 	}
 	dump := req.Extra != nil && req.Extra["dump"] == "1"
+	fast := req.Extra != nil && req.Extra["fast"] == "1"
+	move := ""
+	if req.Extra != nil {
+		move = req.Extra["move"]
+	}
 	return breaker.NewCommand().Run(svc.Data, c.loader, breaker.Request{
-		Name:   req.Name,
-		IVs:    *ivs,
-		CP:     req.CP,
-		Shadow: req.Shadow,
-		League: req.League,
-		Dump:   dump,
+		Name:       req.Name,
+		IVs:        *ivs,
+		CP:         req.CP,
+		Shadow:     req.Shadow,
+		League:     req.League,
+		Dump:       dump,
+		FastOnly:   fast,
+		MoveFilter: move,
 	})
 }
 
@@ -185,7 +192,9 @@ func parseRequest(name string, args []string) (service.Request, error) {
 			ints = append(ints, v)
 			continue
 		}
-		words = append(words, strings.ToLower(a))
+	// Non-integer tokens are words: "fast", "shadow", a league name, "dump",
+	// or "fast:<move>" (a specific-move filter for the breaker).
+	words = append(words, strings.ToLower(a))
 	}
 
 	// Assign ints: if 3+ ints, first is cp, next three are IVs.
@@ -206,22 +215,30 @@ func parseRequest(name string, args []string) (service.Request, error) {
 		req.IVs = &ivs
 	}
 
+	if req.Extra == nil {
+		req.Extra = map[string]string{}
+	}
 	for _, w := range words {
-		switch w {
-		case "atk", "attack":
+		switch {
+		case w == "atk", w == "attack":
 			req.SortStat = engine.SortAtk
-		case "def", "defense":
+		case w == "def", w == "defense":
 			req.SortStat = engine.SortDef
-		case "hp", "health":
+		case w == "hp", w == "health":
 			req.SortStat = engine.SortHp
-		case "overall":
+		case w == "overall":
 			req.SortStat = engine.SortOverall
-		case "shadow":
+		case w == "shadow":
 			req.Shadow = true
-		case "little", "great", "ultra", "master":
+		case w == "little", w == "great", w == "ultra", w == "master":
 			req.League = w
-		case "dump":
-			req.Extra = map[string]string{"dump": "1"}
+		case w == "dump":
+			req.Extra["dump"] = "1"
+		case w == "fast":
+			req.Extra["fast"] = "1"
+		case strings.HasPrefix(w, "fast:"):
+			req.Extra["fast"] = "1"
+			req.Extra["move"] = strings.TrimPrefix(w, "fast:")
 		}
 	}
 	// A trailing league CP (500/1500/2500/10000) sets req.CP, which the

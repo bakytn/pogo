@@ -16,6 +16,14 @@ type Request struct {
 	Shadow bool
 	League string // "little"/"great"/"ultra"/"master" or a CP value
 	Dump   bool   // emit machine-readable lines instead of the human report
+
+	// FastOnly renders only fast moves in the human report (charged moves are
+	// noise at their damage floors — most users care about the fast-move
+	// breakpoints). The machine dump is always complete.
+	FastOnly bool
+	// MoveFilter narrows the human report to one specific move (e.g.
+	// "shadow_claw"); matched against the move ID or its normalized name.
+	MoveFilter string
 }
 
 // Command is the `breaker` command.
@@ -29,7 +37,7 @@ func (c *Command) Name() string { return "breaker" }
 
 // Description is a one-line help string.
 func (c *Command) Description() string {
-	return "Breakpoints: how your moves' damage changes vs the top meta at Rank 1 / 15-0-0 / 0-15-0."
+	return "Breakpoints: how your moves' damage changes vs the top meta at Rank 1 / 15-0-0 / 0-15-0. Options: fast (fast moves only), fast:<move> (one specific move)."
 }
 
 // Run executes the breaker analysis and returns a rendered report.
@@ -60,13 +68,13 @@ func (c *Command) Run(gd *engine.GameData, loader *Loader, req Request) (string,
 	if err != nil {
 		return "", err
 	}
-	opponents := a.Analyze(league)
+	topOpponents := a.Analyze(league)
 
 	var b strings.Builder
 	if req.Dump {
-		writeDump(&b, a, league, opponents)
+		writeDump(&b, a, league, topOpponents)
 	} else {
-		writeReport(&b, a, league, opponents)
+		writeReport(&b, a, league, topOpponents, req.FastOnly, req.MoveFilter)
 	}
 	return b.String(), nil
 }
@@ -132,7 +140,45 @@ func fmtInt(ivs engine.IVs) string {
 	return fmt.Sprintf("%d/%d/%d", ivs.Atk, ivs.Def, ivs.Hp)
 }
 
-func writeReport(b *strings.Builder, a *Analyzer, league *League, opponents []*Opponent) {
+// normMove normalizes a move identifier for matching: lowercased, non-alphanumeric
+// collapsed to a single underscore (so "shadow-claw", "Shadow Claw" and
+// "shadow_claw" all match). Returns "" if empty.
+func normMove(s string) string {
+	s = strings.ToLower(strings.TrimSpace(s))
+	if s == "" {
+		return ""
+	}
+	var b strings.Builder
+	prev := byte(0)
+	for i := 0; i < len(s); i++ {
+		c := s[i]
+		if c == ' ' || c == '-' || c == '_' {
+			if prev != '_' {
+				b.WriteByte('_')
+			}
+			prev = '_'
+			continue
+		}
+		b.WriteByte(c)
+		prev = c
+	}
+	return strings.Trim(b.String(), "_")
+}
+
+// moveMatches reports whether a move (by id or display name) matches the filter.
+// An empty filter matches everything.
+func moveMatches(mv *engine.Attack, filter string) bool {
+	if filter == "" {
+		return true
+	}
+	f := normMove(filter)
+	if f == "" {
+		return true
+	}
+	return normMove(mv.ID) == f || normMove(mv.Name) == f
+}
+
+func writeReport(b *strings.Builder, a *Analyzer, league *League, opponents []*Opponent, fastOnly bool, moveFilter string) {
 	title := a.Poke.SpeciesName
 	if t := engine.FormatTypes(a.Poke.Types); t != "" {
 		title += " (" + t + ")"
@@ -156,7 +202,14 @@ func writeReport(b *strings.Builder, a *Analyzer, league *League, opponents []*O
 	}
 	b.WriteString("\n\n")
 	b.WriteString("damage = now / Rank 1 / 15-0-0 / 0-15-0  (your 4 Add-&-Compare IV states)\n")
-	b.WriteString("⚡ = your move hitting the meta (break) · 🛡 = meta's move hitting you (bulk)\n")
+	breakWord := "your move"
+	if fastOnly {
+		breakWord = "your fast move"
+	}
+	if moveFilter != "" {
+		breakWord = "your " + titleCase(moveFilter)
+	}
+	fmt.Fprintf(b, "⚡ = %s hitting the meta (break) · 🛡 = meta's move hitting you (bulk)\n", breakWord)
 	b.WriteString("meta fights at its default IVs\n\n")
 
 	for i, o := range opponents {
@@ -169,6 +222,12 @@ func writeReport(b *strings.Builder, a *Analyzer, league *League, opponents []*O
 		}
 		fmt.Fprintf(b, "%d. %s%s%s\n", i+1, label, typeLine(o.Types), oppDefaults(o))
 		for _, m := range o.Moves {
+			if fastOnly && !m.Fast {
+				continue
+			}
+			if !moveMatches(&m.Move, moveFilter) {
+				continue
+			}
 			name := m.Move.Name
 			if name == "" {
 				name = titleCase(m.Move.ID)
